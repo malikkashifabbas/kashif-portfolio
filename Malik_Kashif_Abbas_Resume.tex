@@ -1,0 +1,162 @@
+%--------------------------------------------------------------------
+%  Malik Kashif Abbas — One-page Resume
+%  Brand-aligned with portfolio: orange accent (#F59E0B) + navy ink.
+%  Compiles on Overleaf with pdfLaTeX (default).
+%
+%  How to use:
+%    1. Go to https://www.overleaf.com → New Project → Blank Project
+%    2. Replace the auto-generated contents with this entire file
+%    3. Click "Recompile". Download PDF.
+%    4. Rename to "resume.pdf" → put in your portfolio's public/ folder.
+%--------------------------------------------------------------------
+
+\documentclass[a4paper,10pt]{article}
+
+% ─── Core packages ──────────────────────────────────────────────────
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=0.45in]{geometry}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{parskip}
+
+% ─── Brand colors ───────────────────────────────────────────────────
+\definecolor{brand}{HTML}{F59E0B}      % orange — portfolio accent
+\definecolor{branddark}{HTML}{D97706}  % deeper orange for headings
+\definecolor{ink}{HTML}{0A1530}        % deep navy text
+\definecolor{muted}{HTML}{475569}      % slate body
+\definecolor{light}{HTML}{94A3B8}      % light slate for separators
+
+% ─── Link styling ───────────────────────────────────────────────────
+\hypersetup{
+  colorlinks=true,
+  urlcolor=brand,
+  linkcolor=brand,
+}
+
+% ─── Compact layout ─────────────────────────────────────────────────
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+\pagestyle{empty}
+
+% ─── Section heading style (tight) ──────────────────────────────────
+\titleformat{\section}
+  {\color{ink}\large\bfseries}
+  {}{0pt}{}[{\color{brand}\titlerule[1pt]}]
+\titlespacing*{\section}{0pt}{6pt}{3pt}
+
+% ─── Custom commands ────────────────────────────────────────────────
+\newcommand{\jobentry}[4]{%
+  {\textbf{\color{ink}#1}} \hfill {\itshape\color{muted}#3}\\
+  {\color{brand}#2} \hfill {\itshape\color{muted}#4}\par\vspace{1pt}
+}
+
+\newcommand{\proj}[4]{%
+  \noindent\textbf{\color{ink}#1}\, {\color{light}|}\, {\itshape\color{muted}#2}%
+  \hfill {\small\color{brand}\faExternalLinkAlt\, \href{#4}{#3}}\par
+}
+
+% Very tight bullet list
+\newenvironment{tightlist}{%
+  \begin{itemize}[leftmargin=12pt, itemsep=1pt, topsep=2pt, parsep=0pt]
+}{%
+  \end{itemize}
+}
+
+% ════════════════════════════════════════════════════════════════════
+\begin{document}
+
+% ─── HEADER ─────────────────────────────────────────────────────────
+\begin{center}
+  {\fontsize{22pt}{26pt}\selectfont\bfseries\color{ink}MALIK KASHIF ABBAS}\\[1pt]
+  {\color{branddark}\normalsize Full-Stack Developer\, $\cdot$\, MERN + AWS + Workflow Automation}\\[4pt]
+  {\footnotesize\color{muted}
+    \faMapMarkerAlt\, Khushab, Pakistan
+    \quad\textcolor{light}{|}\quad
+    \faEnvelope\, \href{mailto:malikkashifabbas28@gmail.com}{malikkashifabbas28@gmail.com}
+    \quad\textcolor{light}{|}\quad
+    \faPhone*\, +92 305 642 4646
+  }\\[2pt]
+  {\footnotesize\color{muted}
+    \faGithub\, \href{https://github.com/malikkashifabbas}{github.com/malikkashifabbas}
+    \quad\textcolor{light}{|}\quad
+    \faLinkedin\, \href{https://www.linkedin.com/in/malik-kashif-abbas-44980a411/}{linkedin.com/in/malik-kashif-abbas}
+    \quad\textcolor{light}{|}\quad
+    \faGlobe\, \href{https://malikkashif.dev}{malikkashif.dev}
+  }
+\end{center}
+
+% ─── PROFILE ────────────────────────────────────────────────────────
+\section*{\color{brand}\faUserCircle~~Profile}
+
+Full-Stack Developer at \textbf{QuantumStack}, shipping production apps across the full product lifecycle. Specializing in the \textbf{MERN stack}, \textbf{AWS infrastructure} (Lambda, EC2, CloudFront, Docker), and \textbf{workflow-automation integrations} (Zapier, Make, Salesforce, Zoho, HubSpot). I think about system design, performance, and scalability --- not just features.
+
+% ─── EXPERIENCE (minimized) ─────────────────────────────────────────
+\section*{\color{brand}\faBriefcase~~Work Experience}
+
+\jobentry{Full-Stack Developer}{QuantumStack}{Current Role}{Full-time}
+\begin{tightlist}
+  \item Designed \textbf{60\% of the myCRMSIM dashboard UI} and built \textbf{70\% of admin APIs} including SSO authentication and unified WhatsApp + iMessage messaging.
+  \item Architected and shipped \textbf{Serenabeds.ie} end-to-end --- frontend, backend, REST APIs, database --- with Lighthouse 95+ and sub-200ms API response.
+  \item Built workflow automations on \textbf{AWS} (Lambda, EC2, CloudFront) connecting client apps to Zapier, Make, Salesforce, Zoho, and HubSpot via webhooks and SMS triggers.
+\end{tightlist}
+
+% ─── TECHNICAL SKILLS (moved above Projects) ───────────────────────
+\section*{\color{brand}\faCode~~Technical Skills}
+
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\textbf{\color{ink}Languages}        & JavaScript, TypeScript, Python, Java, C++, SQL \\
+\textbf{\color{ink}Frontend}         & React, Next.js, Tailwind CSS, Framer Motion, Redux, React Query, shadcn/ui \\
+\textbf{\color{ink}Backend}          & Node.js, Express, Python (FastAPI, Django, Flask), REST APIs, GraphQL, JWT, SSO \\
+\textbf{\color{ink}Databases}        & MongoDB, PostgreSQL, MySQL, Firebase, Redis \\
+\textbf{\color{ink}Cloud \& DevOps}  & AWS Lambda, AWS EC2, CloudFront, Docker, Git / GitHub, CI/CD, Vercel \\
+\textbf{\color{ink}Integrations}     & Zapier, Make (Integromat), Salesforce, HubSpot, Zoho, Webhooks, SMS Workflows \\
+\end{tabularx}
+
+% ─── PROJECTS (only myCRMSIM and Serenabeds) ────────────────────────
+\section*{\color{brand}\faRocket~~Featured Projects}
+
+\proj{myCRMSIM}{CRM + Messaging Platform}{mycrmsim.com}{https://mycrmsim.com}
+\begin{tightlist}
+  \item Designed 60\% of the dashboard UI; implemented SSO authentication and 70\% of admin APIs.
+  \item Integrated WhatsApp \& iMessage SMS channels for unified customer messaging. \textit{Tech: React, Node.js, Express, MongoDB, SSO, WhatsApp API.}
+\end{tightlist}
+\vspace{2pt}
+
+\proj{Serenabeds}{E-Commerce Platform --- Ireland}{serenabeds.ie}{https://serenabeds.ie}
+\begin{tightlist}
+  \item End-to-end ownership: frontend, backend, REST API architecture, and database design.
+  \item Lighthouse 95+, fully responsive, sub-200ms API response, secure checkout flow. \textit{Tech: React, Next.js, Node.js, MongoDB, REST APIs, Tailwind.}
+\end{tightlist}
+
+% ─── EDUCATION (BS only + Triple Track callout) ─────────────────────
+\section*{\color{brand}\faGraduationCap~~Education}
+
+\noindent\textbf{\color{branddark}\faStar\, Triple Track ---} pursuing three disciplines in parallel: a CS degree, a 5-year religious scholarship, and a full-time IT role. Time management and discipline are core competencies.
+\vspace{4pt}
+
+{\textbf{\color{ink}BS (Hons) in Computer Science}} \hfill {\itshape\color{muted}2022 -- 2026}\\
+{\color{brand}Virtual University of Pakistan}\\
+{\small\itshape\color{muted}Coursework: Programming Fundamentals, Web Development, OOP, Data Structures, Artificial Intelligence.}
+
+% ─── LEADERSHIP & EXTRACURRICULAR (compact) ─────────────────────────
+\section*{\color{brand}\faStar~~Leadership \& Extracurricular}
+
+\begin{tightlist}
+  \item \textbf{Motivational Speaker} --- 2+ years of public talks on discipline, self-learning, and career growth.
+  \item \textbf{Avid Reader} --- 30,000+ pages read across philosophy, self-development, and technical topics.
+  \item \textbf{Public Speaking} --- 5 years of continuous Darse Nizami training in rhetoric and communication.
+\end{tightlist}
+
+% ─── CERTIFICATIONS (single line) ───────────────────────────────────
+\section*{\color{brand}\faCertificate~~Certifications}
+
+\noindent\textbf{\color{ink}Node.js \& Express.js Mastery} \,{\color{light}|}\, \textbf{\color{ink}React.js v19 Complete Course} \,{\color{light}|}\, \textit{\color{muted}Thapa Technical}
+
+\end{document}
