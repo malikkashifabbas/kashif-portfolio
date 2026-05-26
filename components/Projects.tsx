@@ -6,6 +6,7 @@ import {
   ArrowUpRight,
   Check,
   FileText,
+  Github,
 } from "lucide-react";
 import { projects, personal } from "@/lib/data";
 // Local logo imports — Next.js handles static asset URLs automatically.
@@ -13,6 +14,11 @@ import { projects, personal } from "@/lib/data";
 import myCrmsimLogo from "../app/images/myCRMSIM LOGO.png";
 // Local project screenshot imports
 import serenabedsAdminImg from "../app/images/SarenaBeds admin dashboard.png";
+// Integration platform logos — used by the "Third-Party Integrations" project
+import zapierLogo from "../app/images/Integrations Logo/zapier.png";
+import makeLogo from "../app/images/Integrations Logo/make.png";
+import n8nLogo from "../app/images/Integrations Logo/n8n.svg";
+import salesforceLogo from "../app/images/Integrations Logo/salesforce.svg";
 
 // Map project titles to their imported logo files. Logos render on a branded
 // background (white + orange accents). Use this when you want the brand to
@@ -23,9 +29,27 @@ const LOGO_MAP: Record<string, StaticImageData> = {
 
 // Map project titles to imported full-bleed screenshots. Images render as
 // the project preview (object-cover). Use this for real product screenshots.
-const IMAGE_MAP: Record<string, StaticImageData> = {
-  "Serenabeds Admin Dashboard": serenabedsAdminImg,
+const IMAGE_MAP: Record<string, StaticImageData> = {};
+
+// Integration platform logos — keyed by `logoGrid` slugs from data.ts.
+// Used to render a 2×2 brand grid for projects like "Third-Party Integrations".
+//
+// `darkInvert: true` is for logos whose default color is dark/black (Make, n8n).
+// On dark backgrounds they'd be invisible — the CSS filter
+// `dark:invert dark:hue-rotate-180` flips brightness while preserving brand
+// colors, so black text becomes white but purples/pinks stay correct.
+const INTEGRATION_LOGOS: Record<
+  string,
+  { src: StaticImageData; name: string; darkInvert?: boolean }
+> = {
+  zapier:     { src: zapierLogo,     name: "Zapier" },                   // orange box, works on dark
+  make:       { src: makeLogo,       name: "Make", darkInvert: true },   // black "make" text → needs invert
+  n8n:        { src: n8nLogo,        name: "n8n",  darkInvert: true },   // black "n8n" text → needs invert
+  salesforce: { src: salesforceLogo, name: "Salesforce" },               // blue cloud, works on dark
 };
+
+// Helper — does this URL point to GitHub?
+const isGitHubUrl = (url?: string) => !!url && /github\.com/i.test(url);
 
 // Helper — return the resolved logo URL for a project (or undefined).
 function getLogoSrc(title: string, fallback?: string): string | undefined {
@@ -205,20 +229,17 @@ export default function Projects() {
               {/* Image / Logo panel — theme-aware brand background */}
               <div
                 className={`relative aspect-[16/9] overflow-hidden ${
-                  logoSrc
+                  logoSrc || p.logoGrid
                     ? "bg-white dark:bg-[#0a0f1f]"
                     : "bg-slate-100 dark:bg-slate-800"
                 }`}
               >
                 {logoSrc ? (
+                  // ── Single brand logo (e.g., myCRMSIM) ──
                   <div className="absolute inset-0 grid place-items-center p-6">
-                    {/* Brand-orange radial accent */}
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(245,158,11,0.18),transparent_60%)] dark:bg-[radial-gradient(circle_at_25%_25%,rgba(245,158,11,0.30),transparent_65%)] pointer-events-none" />
-                    {/* Brand-amber secondary accent */}
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,rgba(252,189,75,0.12),transparent_55%)] dark:bg-[radial-gradient(circle_at_75%_75%,rgba(252,189,75,0.20),transparent_60%)] pointer-events-none" />
-                    {/* Subtle grid texture */}
                     <div className="absolute inset-0 bg-grid opacity-25 dark:opacity-15 pointer-events-none" />
-                    {/* Central soft glow */}
                     <div className="absolute w-2/3 h-2/3 rounded-full bg-brand-500/10 dark:bg-brand-500/20 blur-3xl pointer-events-none" />
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
@@ -227,7 +248,48 @@ export default function Projects() {
                       className="relative max-w-[75%] max-h-[60%] object-contain transition-transform duration-500 hover:scale-105"
                     />
                   </div>
+                ) : p.logoGrid ? (
+                  // ── 2×2 integration logo grid (Third-Party Integrations) ──
+                  <div className="absolute inset-0 p-4">
+                    {/* Brand accent backdrop */}
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(245,158,11,0.18),transparent_60%)] dark:bg-[radial-gradient(circle_at_25%_25%,rgba(245,158,11,0.28),transparent_65%)] pointer-events-none" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,rgba(252,189,75,0.12),transparent_55%)] dark:bg-[radial-gradient(circle_at_75%_75%,rgba(252,189,75,0.18),transparent_60%)] pointer-events-none" />
+                    <div className="absolute inset-0 bg-grid opacity-20 dark:opacity-10 pointer-events-none" />
+
+                    {/* The 2×2 grid of brand cards */}
+                    <div className="relative h-full w-full grid grid-cols-2 grid-rows-2 gap-2 sm:gap-3">
+                      {p.logoGrid.map((slug) => {
+                        const entry = INTEGRATION_LOGOS[slug];
+                        if (!entry) return null;
+                        return (
+                          <div
+                            key={slug}
+                            className="group/lg relative rounded-xl bg-white dark:bg-slate-800/90 shadow-sm border border-slate-200/80 dark:border-slate-700/70 overflow-hidden hover:shadow-md hover:border-brand-500/50 dark:hover:border-brand-500/50 transition-all"
+                            title={entry.name}
+                          >
+                            {/* Inner flex wrapper for reliable centering (works around SVG viewBox quirks) */}
+                            <div className="absolute inset-0 flex items-center justify-center p-3 pb-5">
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src={entry.src.src}
+                                alt={entry.name}
+                                className={`max-w-[70%] max-h-[55%] w-auto h-auto object-contain transition-transform duration-300 group-hover/lg:scale-105 ${
+                                  entry.darkInvert
+                                    ? "dark:invert dark:hue-rotate-180"
+                                    : ""
+                                }`}
+                              />
+                            </div>
+                            <span className="absolute bottom-1.5 right-2 text-[9px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 pointer-events-none">
+                              {entry.name}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
                 ) : (
+                  // ── Fallback regular project screenshot ──
                   <Image
                     src={getProjectImage(p.title, p.image)}
                     alt={p.title}
@@ -301,7 +363,7 @@ export default function Projects() {
                   ))}
                 </div>
 
-                {/* Actions */}
+                {/* Actions — GitHub repos get GitHub icon + label */}
                 <div className="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap gap-2">
                   {p.liveUrl && p.liveUrl !== "#" ? (
                     <a
@@ -310,8 +372,17 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="flex-1 inline-flex items-center justify-center gap-1.5 text-xs font-semibold py-2 px-3 rounded-lg bg-brand-500 hover:bg-brand-600 text-white transition-colors"
                     >
-                      <ExternalLink size={12} />
-                      Visit Live
+                      {isGitHubUrl(p.liveUrl) ? (
+                        <>
+                          <Github size={12} />
+                          View on GitHub
+                        </>
+                      ) : (
+                        <>
+                          <ExternalLink size={12} />
+                          Visit Live
+                        </>
+                      )}
                     </a>
                   ) : (
                     <span className="flex-1 inline-flex items-center justify-center gap-1.5 text-xs font-medium py-2 px-3 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-400">
@@ -325,7 +396,7 @@ export default function Projects() {
                     className="inline-flex items-center justify-center gap-1.5 text-xs font-medium py-2 px-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                   >
                     <FileText size={12} />
-                    Case Study
+                    {isGitHubUrl(p.caseStudyUrl) ? "README" : "Case Study"}
                   </a>
                 </div>
               </div>

@@ -152,30 +152,34 @@ export const projects = [
     tech: ["React", "Next.js", "Node.js", "MongoDB", "REST APIs", "Tailwind"],
     liveUrl: "https://serenabeds.ie/",
     codeUrl: "#",
-    caseStudyUrl: "https://serenabeds.ie/",
+    caseStudyUrl: "https://admin.serenabeds.com/login",
     featured: true,
   },
   {
-    title: "Serenabeds Admin Dashboard",
-    subtitle: "Admin Panel — Internal Tool",
+    title: "Third-Party Integrations",
+    subtitle: "Multi-Platform Integration Suite",
     category: "BACKEND ENGINEERING",
     description:
-      "Built the entire backend including database schema, authentication, and all core APIs such as product management and order handling.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80&auto=format&fit=crop",
+      "A multi-platform integration suite for MyAPP — an SMS / WhatsApp / RCS / iMessage gateway. This monorepo wires the backend to five popular automation and CRM platforms via OAuth 2.0 and webhook subscribers, so inbound messages fan out to every connected platform in real time.",
+    image: "",
+    // Logo grid renders the 4 integration brands instead of a screenshot.
+    // Logos live in `app/images/Integrations Logo/` and are imported in Projects.tsx.
+    logoGrid: ["zapier", "make", "n8n", "salesforce"] as const,
     bullets: [
-      "Full backend including DB schema design",
-      "Secure authentication & role-based access",
-      "Product, order, and inventory management APIs",
+      "OAuth 2.0 authentication across all integrated platforms",
+      "Inbound messages fan out via webhooks to every subscribed platform",
+      "Custom apps for Zapier, Make, n8n, and Salesforce in one monorepo",
     ],
     metrics: [
-      { label: "Endpoints", value: "40+" },
-      { label: "Auth", value: "JWT" },
+      { label: "Platforms", value: "5+" },
+      { label: "Auth", value: "OAuth 2.0" },
+      { label: "Languages", value: "JS · TS · Apex" },
     ],
-    tech: ["Node.js", "Express", "MongoDB", "JWT", "REST APIs"],
-    liveUrl: "https://admin.serenabeds.com/login",
-    codeUrl: "#",
-    caseStudyUrl: "https://admin.serenabeds.com/login",
+    tech: ["Node.js", "Express", "React", "TypeScript", "OAuth 2.0", "Apex"],
+    liveUrl: "https://github.com/malikkashifabbas/Third_Party_Integrations",
+    codeUrl: "https://github.com/malikkashifabbas/Third_Party_Integrations",
+    caseStudyUrl:
+      "https://github.com/malikkashifabbas/Third_Party_Integrations#readme",
   },
   {
     title: "Nutrafi Kitchen",
