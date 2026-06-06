@@ -32,4 +32,4 @@ yarn-error.log*
 next-env.d.ts
 
 #md file
-*.Require.md
+Require.md
