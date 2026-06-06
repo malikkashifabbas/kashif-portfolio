@@ -4,11 +4,12 @@ import { useState } from "react";
 import { tools } from "@/lib/data";
 
 /**
- * Tools marquee — real brand SVGs via simple-icons.org CDN.
+ * Tools marquee — real brand SVGs self-hosted in public/tool-icons.
  *
- * Logo URL: https://cdn.simpleicons.org/{slug}
- *   (no color parameter — returns the icon in its default brand color,
- *    which is the most reliable URL format on the CDN)
+ * Logo URL: /tool-icons/{slug}.svg
+ *   (downloaded from simple-icons in their default brand color and served
+ *    from our own domain — no runtime dependency on a third-party CDN that
+ *    could rate-limit/drop requests and break the icons in production)
  *
  * Black-default logos (Next.js, Express, Vercel, GitHub) get CSS-inverted
  * in dark mode via `dark:invert dark:brightness-0`. Detection rule:
@@ -65,8 +66,10 @@ function ToolItem({ tool }: { tool: (typeof tools)[number] }) {
   const [failed, setFailed] = useState(false);
   const useCustom = tool.custom || failed;
 
-  // Plain URL — no color parameter — most reliable format on simpleicons CDN
-  const logoUrl = `https://cdn.simpleicons.org/${tool.slug}`;
+  // Self-hosted brand SVGs (downloaded from simple-icons into public/tool-icons).
+  // Served from our own domain so production never depends on a third-party CDN
+  // that can rate-limit/drop requests and trigger the letter-badge fallback.
+  const logoUrl = `/tool-icons/${tool.slug}.svg`;
 
   // If the tool has a `darkColor` in data.ts, it means the default brand color
   // is dark (Next.js, Express, Vercel, GitHub). In dark mode we invert the SVG
