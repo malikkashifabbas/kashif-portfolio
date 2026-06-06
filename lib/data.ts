@@ -25,7 +25,7 @@ export const personal = {
   description:
     "I don't just write features — I think about system design, performance, scalability, and developer experience. Currently shipping production apps at QuantumStack.",
   email: "malikkashifabbas28@gmail.com",
-  linkedin: "https://www.linkedin.com/in/malik-kashif-abbas-44980a411/",
+  linkedin: "https://www.linkedin.com/in/malik-kashif-abbas-52bab13a6?utm_source=share_via&utm_content=profile&utm_medium=member_android",
   github: "https://github.com/malikkashifabbas",
   resumeUrl: "/resume.pdf",
   stats: {

@@ -36,16 +36,6 @@ function gmailComposeUrl(to: string, subject = "", body = ""): string {
   return `https://mail.google.com/mail/?${params.toString()}`;
 }
 
-// Pull a clean display string from any URL (linkedin.com/in/handle/ → /in/handle)
-function pathFromUrl(url: string): string {
-  try {
-    const u = new URL(ensureHttps(url));
-    return (u.pathname.replace(/\/+$/, "") || u.hostname).slice(0, 36);
-  } catch {
-    return url;
-  }
-}
-
 // GitHub handle from full URL (https://github.com/user → @user)
 function githubHandle(url: string): string {
   const last = url.replace(/\/+$/, "").split("/").pop();
@@ -164,7 +154,7 @@ export default function Contact() {
               <ContactRow
                 icon={<Linkedin size={18} />}
                 label="LINKEDIN"
-                value={pathFromUrl(personal.linkedin)}
+                value={personal.name}
                 href={ensureHttps(personal.linkedin)}
               />
               <ContactRow
