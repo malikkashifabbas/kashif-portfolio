@@ -12,6 +12,7 @@ import {
   Loader2,
 } from "lucide-react";
 import { personal } from "@/lib/data";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
@@ -150,6 +151,12 @@ export default function Contact() {
                 href={gmailComposeUrl(
                   personal.email,
                 )}
+              />
+              <ContactRow
+                icon={<WhatsAppIcon size={18} />}
+                label="WHATSAPP"
+                value={personal.whatsapp}
+                href={personal.whatsappUrl}
               />
               <ContactRow
                 icon={<Linkedin size={18} />}
@@ -385,6 +392,11 @@ export default function Contact() {
               href={gmailComposeUrl(personal.email)}
               label="Email (opens in Gmail)"
               icon={<Mail size={18} />}
+            />
+            <SocialIcon
+              href={personal.whatsappUrl}
+              label={`WhatsApp ${personal.whatsapp}`}
+              icon={<WhatsAppIcon size={18} />}
             />
           </div>
         </div>

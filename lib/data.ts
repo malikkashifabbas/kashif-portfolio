@@ -30,6 +30,11 @@ export const personal = {
   email: "malikkashifabbas28@gmail.com",
   linkedin: "https://www.linkedin.com/in/malik-kashif-abbas-52bab13a6?utm_source=share_via&utm_content=profile&utm_medium=member_android",
   github: "https://github.com/malikkashifabbas",
+  whatsapp: "+92 305 6424646",
+  // wa.me needs the number in international format with no "+" or spaces.
+  whatsappUrl:
+    "https://wa.me/923056424646?text=" +
+    encodeURIComponent("Hi Kashif, I found your portfolio and would like to connect."),
   resumeUrl: "/resume.pdf",
   stats: {
     projectsShipped: "5+",

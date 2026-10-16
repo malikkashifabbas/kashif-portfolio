@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Building2, ArrowRight, Download, Github, Linkedin } from "lucide-react";
 import { personal } from "@/lib/data";
+import WhatsAppIcon from "@/components/WhatsAppIcon";
 
 // ── Bubble config ──────────────────────────────────────────────────────
 type Bubble = {
@@ -192,6 +193,16 @@ export default function Hero() {
             >
               <Github size={16} />
               GitHub
+            </a>
+            <a
+              href={personal.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`WhatsApp ${personal.whatsapp}`}
+              className="inline-flex items-center gap-2 px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-semibold hover:border-[#25D366] hover:text-[#25D366] transition-all hover:-translate-y-0.5"
+            >
+              <WhatsAppIcon size={16} className="text-[#25D366]" />
+              WhatsApp
             </a>
           </div>
 
