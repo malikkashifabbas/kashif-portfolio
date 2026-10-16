@@ -4,11 +4,12 @@ import {
   Code2,
   Server,
   Database,
-  Cloud,
+  Layers,
+  BrainCircuit,
   Zap,
   Plug,
   Inbox,
-  MessageSquare,
+  RefreshCcw,
   ArrowRight,
   Sparkles,
   type LucideIcon,
@@ -17,7 +18,7 @@ import {
 // ──────────────────────────────────────────────────────────────────────────────
 // Card data — defined inline so each card can carry its own visual content.
 // ──────────────────────────────────────────────────────────────────────────────
-type CardKind = "frontend" | "backend" | "integrations" | "aws" | "database" | "api";
+type CardKind = "ai" | "mern" | "python" | "frontend" | "integrations" | "database";
 
 interface ExpertiseCard {
   num: string;
@@ -31,89 +32,87 @@ interface ExpertiseCard {
   featured?: boolean;
 }
 
+// 3×3 bento: AI spans 2 cols, CRM spans 2 rows, Databases fills the last 2 cols.
 const cards: ExpertiseCard[] = [
   {
     num: "01",
-    kind: "frontend",
-    tag: "Interface",
-    title: "Frontend Development",
+    kind: "ai",
+    tag: "AI",
+    title: "AI Application Engineering",
     description:
-      "React, Next.js, and modern libraries for pixel-perfect, animated, performant UIs.",
-    icon: Code2,
-    techChips: [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind",
-      "Framer Motion",
-      "Redux",
-      "React Query",
-      "shadcn/ui",
-    ],
-    className: "md:col-span-1 md:row-span-1",
+      "LLM agents on LangGraph, RAG with LangChain, embeddings & vector search, tool-calling and prompt engineering with OpenAI & DeepSeek, turned into production features.",
+    icon: BrainCircuit,
+    className: "md:col-span-2 md:row-span-1",
+    featured: true,
   },
   {
     num: "02",
-    kind: "backend",
-    tag: "Server",
-    title: "Backend Development",
+    kind: "mern",
+    tag: "MERN",
+    title: "MERN Full-Stack",
     description:
-      "Node.js and Python — REST APIs, async services, and scalable server logic.",
-    icon: Server,
-    techChips: [
-      "Node.js",
-      "Express",
-      "Python",
-      "FastAPI",
-      "Django",
-      "Flask",
-      "REST",
-      "JWT",
-    ],
+      "React/Next.js frontends on Node.js/Express REST APIs with MySQL and MongoDB, JWT auth and real-time data sync. Shipped, not just prototyped.",
+    icon: Layers,
+    techChips: ["React", "Next.js", "Node.js", "Express", "MongoDB", "MySQL", "JWT", "Redux"],
     className: "md:col-span-1 md:row-span-1",
   },
   {
     num: "03",
-    kind: "integrations",
-    tag: "Specialty",
-    title: "Integrations & Workflow Automation",
+    kind: "python",
+    tag: "Python",
+    title: "Python Backend & Microservices",
     description:
-      "Inbound messages trigger automated actions like Send SMS, push notifications, and CRM updates — so businesses scale communication without manual work.",
+      "FastAPI, Django and Flask services talking over Apache Kafka, with async workers, SSE streaming and clean REST APIs.",
+    icon: Server,
+    techChips: ["FastAPI", "Django", "Flask", "Apache Kafka", "Pydantic", "SSE", "Async workers"],
+    className: "md:col-span-1 md:row-span-1",
+  },
+  {
+    num: "04",
+    kind: "frontend",
+    tag: "UI",
+    title: "Frontend: React & Angular",
+    description:
+      "React, Next.js and Tailwind CSS, plus Angular with RxJS, NgRx and Angular Material for typed, component-driven apps.",
+    icon: Code2,
+    techChips: ["React", "Next.js", "Tailwind CSS", "Angular", "RxJS", "NgRx", "Angular Material", "TypeScript"],
+    className: "md:col-span-1 md:row-span-1",
+  },
+  {
+    num: "05",
+    kind: "integrations",
+    tag: "CRM",
+    title: "CRM Automation & Integrations",
+    description:
+      "End-to-end Zapier, Make, Salesforce, HubSpot & Zoho integrations: webhooks and event-driven workflows that sync leads, contacts and bookings.",
     icon: Plug,
     className: "md:col-span-1 md:row-span-2",
     featured: true,
   },
   {
-    num: "04",
-    kind: "aws",
-    tag: "Cloud",
-    title: "AWS & Cloud Infrastructure",
-    description:
-      "Docker, AWS services, and CI/CD pipelines for production-ready deployments.",
-    icon: Cloud,
-    className: "md:col-span-2 md:row-span-1",
-    featured: true,
-  },
-  {
-    num: "05",
+    num: "06",
     kind: "database",
     tag: "Data",
-    title: "Database Engineering",
-    description: "MongoDB, PostgreSQL, MySQL — schema design and query optimization.",
+    title: "Databases & Data",
+    description:
+      "MySQL, PostgreSQL, MongoDB, Azure Cosmos DB and Redis: schema design, query optimization and pgvector for semantic search.",
     icon: Database,
-    techChips: ["MongoDB", "Postgres", "MySQL", "Redis"],
-    className: "md:col-span-1 md:row-span-1",
+    className: "md:col-span-2 md:row-span-1",
   },
-  {
-    num: "06",
-    kind: "api",
-    tag: "Architecture",
-    title: "API & System Design",
-    description: "RESTful architecture, microservices, and scalable system design.",
-    icon: Zap,
-    techChips: ["REST", "GraphQL", "Microservices", "OAuth"],
-    className: "md:col-span-1 md:row-span-1",
-  },
+];
+
+const AI_TILES: Tile[] = [
+  { name: "LangGraph", group: "Agents", desc: "Multi-step agent graphs", color: "#F59E0B" },
+  { name: "LangChain", group: "RAG",    desc: "Retrieval pipelines",     color: "#1C9E7A" },
+  { name: "OpenAI",    group: "LLM",    desc: "GPT models + tools",      color: "#10A37F" },
+  { name: "DeepSeek",  group: "LLM",    desc: "Multi-provider routing",  color: "#4D6BFE" },
+];
+
+const DB_TILES: Tile[] = [
+  { name: "MySQL",      group: "SQL",   desc: "Multi-tenant SaaS",    color: "#4479A1" },
+  { name: "PostgreSQL", group: "SQL",   desc: "+ pgvector",           color: "#4169E1" },
+  { name: "MongoDB",    group: "NoSQL", desc: "Document store",       color: "#47A248" },
+  { name: "Cosmos DB",  group: "Azure", desc: "Globally distributed", color: "#0078D4" },
 ];
 
 export default function Expertise() {
@@ -137,8 +136,8 @@ export default function Expertise() {
             What I <span className="text-gradient">build</span>
           </h2>
           <p className="mt-4 text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
-            From frontend interfaces to backend systems and automated workflows
-            — full-stack capabilities across the entire product lifecycle.
+            From LLM agents and RAG pipelines to MERN apps, Python microservices
+            and CRM automation — built end to end for production.
           </p>
         </div>
 
@@ -203,7 +202,12 @@ function Card({ card }: { card: ExpertiseCard }) {
       {/* Kind-specific visual content */}
       <div className="mt-5">
         {card.kind === "integrations" && <WorkflowViz />}
-        {card.kind === "aws" && <AwsServices />}
+        {card.kind === "ai" && (
+          <ServiceTiles tiles={AI_TILES} status="Agents live in production" badge="AI Native" />
+        )}
+        {card.kind === "database" && (
+          <ServiceTiles tiles={DB_TILES} status="Plus Redis for queues, caching & rate limits" badge="Data Layer" />
+        )}
         {card.techChips && <TechChips chips={card.techChips} />}
       </div>
 
@@ -218,7 +222,7 @@ function Card({ card }: { card: ExpertiseCard }) {
 
 // ──────────────────────────────────────────────────────────────────────────────
 // WorkflowViz — animated mini visualization showing:
-// [Inbound Msg] → [Trigger] → [Send SMS]
+// [Inbound event] → [Trigger] → [CRM synced]
 // ──────────────────────────────────────────────────────────────────────────────
 function WorkflowViz() {
   return (
@@ -227,23 +231,23 @@ function WorkflowViz() {
       <div className="space-y-3">
         <WorkflowNode
           icon={<Inbox size={14} />}
-          label="Inbound Message"
-          sub="Webhook receives"
+          label="Inbound Event"
+          sub="Webhook receives a message or lead"
           delay="0s"
         />
         <FlowLine />
         <WorkflowNode
           icon={<Zap size={14} />}
           label="Trigger Fires"
-          sub="Zapier / Make"
+          sub="Zapier / Make / native app"
           delay="0.6s"
           highlight
         />
         <FlowLine />
         <WorkflowNode
-          icon={<MessageSquare size={14} />}
-          label="Send SMS"
-          sub="Action dispatched"
+          icon={<RefreshCcw size={14} />}
+          label="CRM Synced"
+          sub="Leads, contacts & bookings"
           delay="1.2s"
         />
       </div>
@@ -338,32 +342,36 @@ function FlowLine() {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
-// AwsServices — refined 4-tile grid (Lambda, CloudFront, EC2, Docker)
-// Each tile is bigger now: colored stripe, name, and a short descriptor.
+// ServiceTiles — 4-tile grid with a brand-color stripe, group label and descriptor.
 // ──────────────────────────────────────────────────────────────────────────────
-function AwsServices() {
-  const services = [
-    { name: "Lambda",     desc: "Serverless",  color: "#FF9900" },
-    { name: "CloudFront", desc: "CDN / Edge",  color: "#8C4FFF" },
-    { name: "EC2",        desc: "Compute",     color: "#FF9900" },
-    { name: "Docker",     desc: "Containers",  color: "#2496ED" },
-  ];
+interface Tile {
+  name: string;
+  group: string;
+  desc: string;
+  color: string;
+}
 
+function ServiceTiles({
+  tiles,
+  status,
+  badge,
+}: {
+  tiles: Tile[];
+  status: string;
+  badge: string;
+}) {
   return (
     <div className="mt-2">
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        {services.map((s) => (
+        {tiles.map((s) => (
           <div
             key={s.name}
             className="group/svc relative overflow-hidden flex flex-col items-start justify-between p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40 hover:border-brand-400/60 transition-all hover:-translate-y-0.5 min-h-[88px]"
           >
-            {/* Top-left colored stripe (service brand color) */}
             <span
               className="absolute top-0 left-0 h-1 w-full"
               style={{ backgroundColor: s.color }}
             />
-
-            {/* Soft glow on hover, tinted with the service color */}
             <span
               aria-hidden
               className="pointer-events-none absolute -bottom-8 -right-8 w-20 h-20 rounded-full opacity-0 group-hover/svc:opacity-30 transition-opacity blur-2xl"
@@ -376,7 +384,7 @@ function AwsServices() {
                 style={{ backgroundColor: s.color }}
               />
               <span className="text-[11px] uppercase tracking-wider font-semibold text-slate-400">
-                AWS
+                {s.group}
               </span>
             </div>
 
@@ -384,7 +392,7 @@ function AwsServices() {
               <div className="text-sm font-bold text-ink dark:text-white leading-none">
                 {s.name}
               </div>
-              <div className="mt-1 text-[10px] text-slate-500 dark:text-slate-400 leading-none">
+              <div className="mt-1 text-[10px] text-slate-500 dark:text-slate-400 leading-tight">
                 {s.desc}
               </div>
             </div>
@@ -392,14 +400,13 @@ function AwsServices() {
         ))}
       </div>
 
-      {/* Status row */}
-      <div className="mt-4 flex items-center justify-between">
+      <div className="mt-4 flex items-center justify-between gap-3">
         <div className="flex items-center gap-2 text-[10px] text-slate-500 dark:text-slate-400">
-          <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-          <span>Production deployments live</span>
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+          <span>{status}</span>
         </div>
-        <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-widest">
-          Cloud Native
+        <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-widest shrink-0">
+          {badge}
         </span>
       </div>
     </div>

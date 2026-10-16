@@ -5,32 +5,35 @@
 export const personal = {
   name: "Malik Kashif Abbas",
   initials: "MK",
-  role: "Full-Stack Developer @ QuantumStack",
-  company: "QuantumStack",
-  companyUrl: "https://quantumstackai.com/team",
+  role: "AI Application Engineer · Full Stack Developer (MERN & Python)",
+  title: "AI Application Engineer & Full Stack Developer",
+  company: "HyperNym & Metis International",
+  companyUrl: "https://hypernym.io",
+  currentPosition: "Full Stack Developer",
   // Words that rotate in the typing animation — now SPECIALTIES, not titles.
   tagline: [
-    "Full-Stack Engineering",
-    "Workflow Automation",
-    "Third-Party Integrations",
-    "AWS Cloud Solutions",
+    "LLM Agents & RAG",
+    "AI Application Engineering",
+    "MERN Full-Stack Apps",
+    "Python Microservices",
+    "CRM Integrations",
   ],
   headline: {
-    pre: "Building",
-    accent1: "scalable",
-    middle: "products that",
-    accent2: "ship fast",
+    pre: "I build",
+    accent1: "AI-powered products",
+    middle: "and full-stack web apps that make it into",
+    accent2: "production",
     end: ".",
   },
   description:
-    "I don't just write features — I think about system design, performance, scalability, and developer experience. Currently shipping production apps at QuantumStack.",
+    "1+ year shipping MERN + MySQL apps and Python AI with FastAPI, LangChain, LangGraph and RAG. Now a Full Stack Developer at HyperNym & Metis International, building Django microservices with Kafka and Angular frontends.",
   email: "malikkashifabbas28@gmail.com",
   linkedin: "https://www.linkedin.com/in/malik-kashif-abbas-52bab13a6?utm_source=share_via&utm_content=profile&utm_medium=member_android",
   github: "https://github.com/malikkashifabbas",
   resumeUrl: "/resume.pdf",
   stats: {
     projectsShipped: "5+",
-    currentRole: "QuantumStack",
+    currentRole: "HyperNym & Metis International",
     integrations: "10+",
     linkedinConnections: "1,000+",
     githubRepos: "20+",
@@ -54,176 +57,120 @@ export const navLinks = [
 // What I Do — Bento grid expertise
 // ─────────────────────────────────────────────────────────────────────────────
 export const expertise = [
-  {
-    tag: "UI/UX",
-    title: "Frontend Development",
-    description: "React, Next.js, Tailwind, and pixel-perfect responsive UI.",
-    icon: "code",
-    span: "small",
-  },
-  {
-    tag: "Server",
-    title: "Backend Development",
-    description: "Node.js, Express, REST APIs, and scalable server logic.",
-    icon: "server",
-    span: "small",
-  },
-  {
-    tag: "Automation",
-    title: "Integrations & Workflow Automation",
-    description:
-      "Zapier, Make, Salesforce, Zoho, and HubSpot — I build automated workflows where inbound messages trigger actions like Send SMS, push notifications, and CRM updates, so businesses scale communication without manual work.",
-    icon: "plug",
-    span: "large",
-  },
-  {
-    tag: "Cloud",
-    title: "AWS & DevOps",
-    description:
-      "Docker, AWS (Lambda, ECS, EC2, CloudFront, API Gateway), and CI/CD pipelines.",
-    icon: "cloud",
-    span: "large",
-  },
-  {
-    tag: "Data",
-    title: "Database Engineering",
-    description: "MongoDB, PostgreSQL, MySQL — schema design and query optimization.",
-    icon: "database",
-    span: "small",
-  },
-  {
-    tag: "Architecture",
-    title: "API & System Design",
-    description: "RESTful architecture, microservices, and scalable system design.",
-    icon: "zap",
-    span: "small",
-  },
+  { tag: "AI", title: "AI Application Engineering", description: "LLM agents on LangGraph, RAG with LangChain, tool-calling and prompt engineering with OpenAI & DeepSeek.", icon: "brain", span: "large" },
+  { tag: "MERN", title: "MERN Full-Stack", description: "React/Next.js on Node.js/Express REST APIs with MySQL and MongoDB.", icon: "layers", span: "small" },
+  { tag: "Python", title: "Python Backend & Microservices", description: "FastAPI, Django and Flask services over Apache Kafka.", icon: "server", span: "small" },
+  { tag: "UI", title: "Frontend: React & Angular", description: "React, Next.js, Tailwind CSS, and Angular with RxJS, NgRx and Angular Material.", icon: "code", span: "small" },
+  { tag: "CRM", title: "CRM Automation & Integrations", description: "Zapier, Make, Salesforce, HubSpot & Zoho via webhooks and event-driven workflows.", icon: "plug", span: "large" },
+  { tag: "DB", title: "Databases & Data", description: "MySQL, PostgreSQL, MongoDB, Azure Cosmos DB and Redis.", icon: "database", span: "large" },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Projects — REAL projects shipped at QuantumStack & freelance
+// Projects — company work first (MyCRMSim-AI, HyperNet), then integrations and freelance MERN.
 // ─────────────────────────────────────────────────────────────────────────────
 export const projects = [
   {
-    title: "myCRMSIM",
-    subtitle: "CRM + Messaging Platform",
-    category: "PLATFORM DEVELOPMENT",
+    title: "MyCRMSim-AI",
+    subtitle: "Multi-agent AI support & CRM automation platform (~30k lines, in production)",
+    category: "AI PLATFORM · CORE DEVELOPER",
     description:
-      "Designed 60% of the dashboard UI and implemented SSO authentication with 70% of admin APIs. Integrated WhatsApp & iMessage SMS functionality for unified customer messaging.",
-    image:
-      "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&q=80&auto=format&fit=crop",
-    // Brand logo — drop your file at: public/mycrmsim-logo.png
+      "Core developer. Built two coordinated LLM agents: a LangGraph booking & qualification agent and “Simi”, an in-app support agent with intent classification, entity extraction and tool-calling. Implemented RAG with LangChain (embeddings + vector similarity search) and multi-provider LLM routing (OpenAI + DeepSeek) so agents answer from each client’s own knowledge base. Also built React/Next.js frontends on Node.js/Express + MySQL and CRM automation across Zapier, Make, Salesforce, HubSpot and Zoho.",
+    image: "",
     logo: "/mycrmsim-logo.png",
-    logoBg: "#000000", // black background matches the actual logo artwork
+    logoBg: "#000000",
     bullets: [
-      "Designed 60% of the dashboard UI from scratch",
-      "Built 70% of admin APIs + SSO authentication",
-      "Integrated WhatsApp & iMessage SMS functionality",
+      "Two coordinated LLM agents, including the “Simi” support agent",
+      "RAG over each client’s knowledge base + multi-provider LLM routing",
+      "React/Next.js + Node.js/Express on MySQL, CRM automation end to end",
     ],
     metrics: [
-      { label: "Dashboard UI", value: "60%" },
-      { label: "Admin APIs", value: "70%" },
-      { label: "3rd-Party Integrations", value: "WhatsApp + iMessage" },
+      { label: "LLM Agents", value: "2" },
+      { label: "Lines of Code", value: "~30k" },
+      { label: "CRM Integrations", value: "5" },
     ],
-    tech: ["React", "Node.js", "Express", "MongoDB", "SSO", "WhatsApp API"],
-    liveUrl: "https://mycrmsim.com/",
+    tech: [
+      "Python", "FastAPI", "LangChain", "LangGraph", "OpenAI", "DeepSeek",
+      "React", "Node.js", "Express", "MySQL", "Redis", "Docker",
+    ],
+    demoUrl: "https://mycrmsim.com/",
+    liveUrl: "https://app.mycrmsim.com/",
     codeUrl: "#",
-    caseStudyUrl: "https://support.mycrmsim.com/",
+    caseStudyUrl: "/case-studies/mycrmsim-ai",
     featured: true,
   },
   {
-    title: "Serenabeds",
-    subtitle: "E-Commerce Platform — Ireland",
-    category: "FULL-STACK DEVELOPMENT",
+    title: "HyperNet IoT Platform",
+    subtitle: "HyperNym’s SaaS IoT platform for fleet, asset & smart-building use cases",
+    category: "CURRENT WORK · IOT",
     description:
-      "Designed and developed both frontend and backend, including database architecture, REST APIs, and a fully responsive UI for a seamless shopping experience.",
-    image:
-      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200&q=80&auto=format&fit=crop",
+      "Contributing to HyperNym’s IoT platform for device management, provisioning and data-lake analytics, which powers fleet management, asset tracking and smart-building use cases. I build backend microservices in Python (Django, FastAPI, Flask) with Apache Kafka, PostgreSQL and Azure Cosmos DB, and Angular frontends.",
+    image: "",
+    visual: "iot" as const,
+    badge: "NEW",
     bullets: [
-      "End-to-end ownership — frontend, backend & database",
-      "Fully responsive shopping experience",
-      "REST API architecture with secure checkout flow",
+      "Device management, provisioning & data-lake analytics",
+      "Python microservices (Django, FastAPI, Flask) over Apache Kafka",
+      "Angular frontends with RxJS on PostgreSQL & Azure Cosmos DB",
     ],
-    metrics: [
-      { label: "Lighthouse", value: "95+" },
-      { label: "Mobile Ready", value: "100%" },
-      { label: "API Response", value: "<200ms" },
+    metrics: [],
+    tech: [
+      "Python", "Django", "FastAPI", "Apache Kafka", "Angular",
+      "Flask", "PostgreSQL", "Azure Cosmos DB", "RxJS",
     ],
-    tech: ["React", "Next.js", "Node.js", "MongoDB", "REST APIs", "Tailwind"],
-    liveUrl: "https://serenabeds.ie/",
-    codeUrl: "#",
-    caseStudyUrl: "https://admin.serenabeds.com/login",
-    featured: true,
+    liveUrl: "",
+    codeUrl: "",
+    caseStudyUrl: "",
+    privateNote: "Employer project — public details only",
   },
   {
-    title: "Third-Party Integrations",
-    subtitle: "Multi-Platform Integration Suite",
-    category: "BACKEND ENGINEERING",
+    title: "CRM Automation Suite",
+    subtitle: "Multi-Platform Integration Layer",
+    category: "INTEGRATIONS",
     description:
-      "A multi-platform integration suite for MyAPP — an SMS / WhatsApp / RCS / iMessage gateway. This monorepo wires the backend to five popular automation and CRM platforms via OAuth 2.0 and webhook subscribers, so inbound messages fan out to every connected platform in real time.",
+      "Owned a multi-platform integration layer connecting Zapier, Make, n8n, Salesforce, HubSpot and Zoho via webhooks and OAuth 2.0, auto-syncing leads, contacts and appointments across clients’ existing CRMs.",
     image: "",
     // Logo grid renders the 4 integration brands instead of a screenshot.
     // Logos live in `app/images/Integrations Logo/` and are imported in Projects.tsx.
     logoGrid: ["zapier", "make", "n8n", "salesforce"] as const,
     bullets: [
-      "OAuth 2.0 authentication across all integrated platforms",
-      "Inbound messages fan out via webhooks to every subscribed platform",
-      "Custom apps for Zapier, Make, n8n, and Salesforce in one monorepo",
+      "OAuth 2.0 + webhooks across every connected platform",
+      "Auto-syncs leads, contacts and appointments into existing CRMs",
+      "Custom apps for Zapier, Make, n8n and Salesforce",
     ],
     metrics: [
-      { label: "Platforms", value: "5+" },
+      { label: "Platforms", value: "6" },
       { label: "Auth", value: "OAuth 2.0" },
       { label: "Languages", value: "JS · TS · Apex" },
     ],
-    tech: ["Node.js", "Express", "React", "TypeScript", "OAuth 2.0", "Apex"],
+    tech: ["Node.js", "Express", "TypeScript", "OAuth 2.0", "Webhooks", "REST APIs"],
     liveUrl: "https://github.com/malikkashifabbas/Third_Party_Integrations",
     codeUrl: "https://github.com/malikkashifabbas/Third_Party_Integrations",
     caseStudyUrl:
       "https://github.com/malikkashifabbas/Third_Party_Integrations#readme",
   },
   {
-    title: "Nutrafi Kitchen",
-    subtitle: "Food E-Commerce Platform",
-    category: "FULL-STACK DEVELOPMENT",
+    title: "Serenabeds",
+    subtitle: "E-Commerce Platform — Ireland (serenabeds.ie)",
+    category: "MERN · FULL-STACK",
     description:
-      "Developed both frontend UI and backend logic with product listing, cart flow, and efficient data management for admin operations.",
+      "E-commerce platform (Ireland) built end-to-end (frontend, backend, REST API architecture and MongoDB schema) with JWT-authenticated checkout. Lighthouse 95+ and sub-200 ms API responses in production.",
     image:
-      "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1200&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200&q=80&auto=format&fit=crop",
     bullets: [
-      "End-to-end product catalog & cart flow",
-      "Admin operations panel with efficient data ops",
-      "Optimized backend queries for fast browsing",
+      "End-to-end ownership — frontend, backend & MongoDB schema",
+      "REST API architecture with JWT-authenticated checkout",
+      "Fully responsive shopping experience",
     ],
     metrics: [
-      { label: "Cart Flow", value: "Optimized" },
-      { label: "Stack", value: "MERN" },
+      { label: "Lighthouse", value: "95+" },
+      { label: "Mobile Ready", value: "100%" },
+      { label: "API Response", value: "<200ms" },
     ],
-    tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind"],
-    liveUrl: "#",
+    tech: ["React", "Next.js", "Node.js", "MongoDB", "REST APIs", "Tailwind CSS"],
+    liveUrl: "https://serenabeds.ie/",
     codeUrl: "#",
-    caseStudyUrl: "#",
-  },
-  {
-    title: "Glambar Beauty Lounge",
-    subtitle: "Salon Management Platform",
-    category: "FULL-STACK DEVELOPMENT",
-    description:
-      "Delivered a complete responsive admin dashboard with full backend APIs, authentication, and database structure for full business automation.",
-    image:
-      "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1200&q=80&auto=format&fit=crop",
-    bullets: [
-      "Complete responsive admin dashboard",
-      "Full backend APIs + authentication",
-      "Database structure for business automation",
-    ],
-    metrics: [
-      { label: "Dashboard", value: "100% Responsive" },
-      { label: "Auth", value: "JWT" },
-    ],
-    tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind", "JWT"],
-    liveUrl: "#",
-    codeUrl: "#",
-    caseStudyUrl: "#",
+    caseStudyUrl: "https://admin.serenabeds.com/login",
+    featured: true,
   },
 ];
 
@@ -258,73 +205,93 @@ export const testimonials = [
 // ─────────────────────────────────────────────────────────────────────────────
 export const skillCategories = [
   {
-    title: "Languages",
+    title: "AI / LLM",
     items: [
-      { name: "JavaScript", icon: "code", level: 95 },
-      { name: "TypeScript", icon: "code", level: 88 },
-      { name: "Python", icon: "code", level: 80 },
-      { name: "Java", icon: "coffee", level: 75 },
-      { name: "C++", icon: "code", level: 70 },
-      { name: "SQL", icon: "database", level: 85 },
+      { name: "LangChain", icon: "link", level: 85 },
+      { name: "LangGraph", icon: "graph", level: 85 },
+      { name: "RAG", icon: "database", level: 85 },
+      { name: "LLM agents", icon: "zap", level: 85 },
+      { name: "Embeddings", icon: "layers", level: 80 },
+      { name: "pgvector", icon: "database", level: 72 },
+      { name: "Tool-calling", icon: "box", level: 85 },
+      { name: "Prompt engineering", short: "Prompting", icon: "code", level: 88 },
+      { name: "OpenAI", icon: "zap", level: 88 },
+      { name: "DeepSeek", icon: "zap", level: 78 },
     ],
   },
   {
-    title: "Frontend",
+    title: "MERN Stack",
     items: [
-      { name: "React", icon: "react", level: 95 },
-      { name: "Next.js", icon: "next", level: 90 },
-      { name: "TypeScript", icon: "code", level: 88 },
-      { name: "Tailwind", icon: "wind", level: 92 },
-      { name: "Framer Motion", icon: "zap", level: 85 },
-      { name: "Redux", icon: "layers", level: 85 },
+      { name: "React", icon: "react", level: 92 },
+      { name: "Node.js", icon: "server", level: 90 },
+      { name: "Express.js", icon: "fast", level: 90 },
+      { name: "MongoDB", icon: "leaf", level: 88 },
+      { name: "Next.js", icon: "next", level: 88 },
+      { name: "Redux", icon: "layers", level: 84 },
       { name: "React Query", icon: "refresh", level: 82 },
-      { name: "shadcn/ui", icon: "layers", level: 80 },
+      { name: "Tailwind CSS", icon: "wind", level: 92 },
+      { name: "REST APIs", icon: "link", level: 94 },
+      { name: "GraphQL", icon: "graph", level: 72 },
+      { name: "JWT/SSO", icon: "lock", level: 88 },
     ],
   },
   {
-    title: "Backend",
+    title: "Python Backend",
     items: [
-      { name: "Node.js", icon: "server", level: 92 },
-      { name: "Express", icon: "fast", level: 90 },
-      { name: "Python", icon: "code", level: 85 },
-      { name: "FastAPI", icon: "zap", level: 82 },
-      { name: "Django", icon: "server", level: 80 },
-      { name: "Flask", icon: "fast", level: 78 },
-      { name: "REST APIs", icon: "link", level: 95 },
-      { name: "JWT / SSO", icon: "lock", level: 90 },
+      { name: "FastAPI", icon: "zap", level: 86 },
+      { name: "Django", icon: "server", level: 78 },
+      { name: "Flask", icon: "fast", level: 76 },
+      { name: "Pydantic", icon: "check", level: 84 },
+      { name: "async/await", icon: "refresh", level: 84 },
+      { name: "SSE streaming", icon: "zap", level: 82 },
+      { name: "Background workers", short: "Workers", icon: "box", level: 82 },
+      { name: "Webhooks", icon: "link", level: 90 },
     ],
   },
   {
-    title: "Database",
+    title: "Databases",
     items: [
-      { name: "MongoDB", icon: "leaf", level: 92 },
-      { name: "PostgreSQL", icon: "database", level: 85 },
-      { name: "MySQL", icon: "database", level: 82 },
-      { name: "Firebase", icon: "flame", level: 78 },
-      { name: "Redis", icon: "zap", level: 75 },
+      { name: "MySQL", icon: "database", level: 88 },
+      { name: "PostgreSQL", icon: "database", level: 82 },
+      { name: "MongoDB", icon: "leaf", level: 88 },
+      { name: "Redis", icon: "zap", level: 80 },
+      { name: "pgvector", icon: "layers", level: 72 },
+      { name: "Azure Cosmos DB", short: "Cosmos DB", icon: "cloud", level: 70 },
     ],
   },
   {
-    title: "Cloud & DevOps",
+    title: "Angular & Microservices",
     items: [
-      { name: "AWS Lambda", icon: "cloud", level: 85 },
-      { name: "CloudFront", icon: "cloud", level: 80 },
-      { name: "AWS EC2", icon: "cloud", level: 82 },
-      { name: "Docker", icon: "box", level: 85 },
-      { name: "Git / CI/CD", icon: "git", level: 90 },
-      { name: "Vercel", icon: "triangle", level: 92 },
+      { name: "Angular", icon: "code", level: 72 },
+      { name: "RxJS", icon: "refresh", level: 70 },
+      { name: "NgRx", icon: "layers", level: 66 },
+      { name: "Angular Material", short: "Material", icon: "box", level: 72 },
+      { name: "Microservices", icon: "server", level: 78 },
+      { name: "Apache Kafka", icon: "fast", level: 70 },
+      { name: "Event-driven architecture", short: "Event-driven", icon: "zap", level: 78 },
     ],
   },
   {
-    title: "Integrations & Automation",
+    title: "CRM & Automation",
     items: [
+      { name: "Salesforce", icon: "cloud", level: 84 },
+      { name: "HubSpot", icon: "flame", level: 84 },
+      { name: "Zoho", icon: "leaf", level: 86 },
       { name: "Zapier", icon: "zap", level: 92 },
-      { name: "Make", icon: "refresh", level: 88 },
-      { name: "HubSpot", icon: "flame", level: 85 },
-      { name: "Salesforce", icon: "cloud", level: 82 },
-      { name: "Zoho", icon: "leaf", level: 80 },
-      { name: "Webhooks", icon: "link", level: 92 },
-      { name: "SMS Workflows", icon: "zap", level: 90 },
+      { name: "Make", icon: "refresh", level: 90 },
+      { name: "Workflow automation", short: "Workflows", icon: "link", level: 92 },
+    ],
+  },
+  {
+    title: "Tools & Workflow",
+    items: [
+      { name: "Docker", icon: "box", level: 85 },
+      { name: "Git", icon: "git", level: 92 },
+      { name: "GitHub", icon: "git", level: 92 },
+      { name: "Bitbucket", icon: "git", level: 82 },
+      { name: "SourceTree", icon: "git", level: 84 },
+      { name: "Vercel", icon: "triangle", level: 90 },
+      { name: "Agile", icon: "refresh", level: 85 },
     ],
   },
 ];
@@ -342,16 +309,25 @@ export const tools = [
   { name: "TypeScript",  slug: "typescript",          color: "3178C6" },
   { name: "Python",      slug: "python",              color: "3776AB" },
 
+  // ── AI / LLM ──
+  { name: "LangChain",   slug: "langchain",           color: "1C3C3C", darkColor: "FFFFFF" },
+  { name: "OpenAI",      slug: "openai",              color: "000000", darkColor: "FFFFFF" },
+
   // ── Frontend ──
   { name: "React",       slug: "react",               color: "61DAFB" },
   { name: "Next.js",     slug: "nextdotjs",           color: "000000", darkColor: "FFFFFF" },
   { name: "Tailwind",    slug: "tailwindcss",         color: "06B6D4" },
   { name: "Redux",       slug: "redux",               color: "764ABC" },
+  { name: "Angular",     slug: "angular",             color: "DD0031" },
 
   // ── Backend ──
   { name: "Node.js",     slug: "nodedotjs",           color: "5FA04E" },
   { name: "Express",     slug: "express",             color: "000000", darkColor: "FFFFFF" },
   { name: "GraphQL",     slug: "graphql",             color: "E10098" },
+  { name: "FastAPI",     slug: "fastapi",             color: "009688" },
+  { name: "Django",      slug: "django",              color: "092E20", darkColor: "FFFFFF" },
+  { name: "Flask",       slug: "flask",               color: "000000", darkColor: "FFFFFF" },
+  { name: "Apache Kafka", slug: "apachekafka",        color: "231F20", darkColor: "FFFFFF" },
 
   // ── Databases ──
   { name: "MongoDB",     slug: "mongodb",             color: "47A248" },
@@ -379,13 +355,13 @@ export const tools = [
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
-// About — REAL bio with QuantumStack + integrations specialty
+// About — bio, education and the experience timeline
 // ─────────────────────────────────────────────────────────────────────────────
 export const about = {
   bio: [
-    "I'm a Full-Stack Developer at QuantumStack, where I've shipped production apps across the full product lifecycle — designing RESTful APIs, managing SQL & NoSQL databases, containerizing services with Docker, and deploying to AWS (Lambda, ECS, EC2, CloudFront, API Gateway).",
-    "I also specialize in third-party integrations and workflow automation — connecting apps with Zapier, Make, Salesforce, Zoho, and HubSpot. I build automated workflows like inbound-message triggers that fire actions (Send SMS, push notifications, CRM updates), so businesses scale customer communication without manual intervention.",
-    "I don't just write features — I think about system design, performance, scalability, and developer experience. When something needs to ship fast and scale well, that's where I do my best work.",
+    "I'm a Full Stack Developer at HyperNym & Metis International Limited, building Python microservices with Django, FastAPI and Flask, event-driven messaging on Apache Kafka, PostgreSQL and Azure Cosmos DB data layers, and Angular frontends.",
+    "Before that, I spent a year at QuantumStack as an AI Application Engineer & Full Stack Developer (MERN + Python). As a core developer on MyCRMSim-AI, I built \"Simi\", an in-app AI support agent, alongside a LangGraph booking agent, plus a RAG pipeline with LangChain and vector similarity search, React/Next.js frontends with Node.js/Express APIs on MySQL, and end-to-end CRM integrations with Zapier, Make, Salesforce, HubSpot and Zoho.",
+    "I care about the whole system: clean architecture, retrieval quality, cost and latency, and shipping features people actually use.",
   ],
   education: {
     // Triple-track callout — appears at top of the Education card (BOLD).
@@ -401,11 +377,35 @@ export const about = {
     ],
   },
   experience: {
-    // Bold opener — same length as Education's tripleTrack so cards match height
     bold:
-      "Building production apps at QuantumStack while simultaneously completing a CS degree. The same discipline that ships great software on time.",
-    role: "Full-Stack Developer",
-    company: "QuantumStack",
-    period: "Current Role · Full-time",
+      "Shipping production software full-time while completing a CS degree — from LLM agents to event-driven microservices.",
+    // Newest first — titles and dates match LinkedIn and the résumé.
+    roles: [
+      {
+        role: "Full Stack Developer",
+        company: "HyperNym & Metis International Limited",
+        companyUrl: "https://hypernym.io",
+        meta: "Islamabad · Full-time",
+        period: "Oct 2026 – Present",
+        current: true,
+        bullets: [
+          "Build backend microservices in Python with Django, FastAPI and Flask, using Apache Kafka for event-driven communication and PostgreSQL and Azure Cosmos DB for storage.",
+          "Build responsive Angular frontends (TypeScript, RxJS, NgRx, Angular Material) with reusable components and typed services connected to the backend APIs.",
+        ],
+      },
+      {
+        role: "AI Application Engineer & Full Stack Developer (MERN + Python)",
+        company: "QuantumStack",
+        companyUrl: "https://quantumstackai.com/team",
+        meta: "Taxila · Full-time",
+        period: "Aug 2025 – Oct 2026",
+        current: false,
+        bullets: [
+          "Built responsive React/Next.js frontends and Node.js/Express REST APIs backed by MySQL for a multi-tenant SaaS platform, with JWT authentication and real-time data sync.",
+          "Developed Python/FastAPI AI services with LangChain, LangGraph and Redis, including SSE streaming chat, background workers and LLM usage tracking.",
+          "Owned all third-party CRM integrations end-to-end (Zapier, Make, Salesforce, HubSpot and Zoho) using webhooks and event-driven workflows to auto-sync leads, contacts and appointments.",
+        ],
+      },
+    ],
   },
 };

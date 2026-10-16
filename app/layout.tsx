@@ -2,26 +2,48 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
+const SITE_URL = "https://malikkashifabbas.vercel.app";
+const TITLE =
+  "Malik Kashif Abbas — AI Application Engineer & Full Stack Developer (MERN & Python)";
+const DESCRIPTION =
+  "AI Application Engineer & Full Stack Developer (MERN & Python) building LLM agents, RAG with LangChain, Django/FastAPI microservices and Angular apps.";
+
 export const metadata: Metadata = {
-  title: "Malik Kashif Abbas | Full-Stack Developer",
-  description:
-    "Portfolio of Malik Kashif Abbas — Full-Stack Developer specializing in the MERN stack. I build fast, clean, user-focused web experiences.",
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
   keywords: [
     "Malik Kashif Abbas",
-    "Full-Stack Developer",
+    "AI Application Engineer",
+    "Full Stack Developer",
     "MERN Stack",
+    "MySQL",
+    "Python",
+    "FastAPI",
+    "Django",
+    "LangChain",
+    "LangGraph",
+    "RAG",
+    "LLM",
+    "Angular",
+    "Apache Kafka",
+    "Microservices",
     "React",
     "Node.js",
-    "Next.js",
-    "Web Developer",
-    "Portfolio",
   ],
   authors: [{ name: "Malik Kashif Abbas" }],
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Malik Kashif Abbas | Full-Stack Developer",
-    description:
-      "Full-Stack Developer specializing in the MERN stack. Building fast, clean, user-focused web experiences.",
+    title: TITLE,
+    description: DESCRIPTION,
+    url: SITE_URL,
+    siteName: "Malik Kashif Abbas",
     type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: TITLE,
+    description: DESCRIPTION,
   },
 };
 

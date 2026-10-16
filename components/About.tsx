@@ -16,17 +16,13 @@ import profileImg from "../app/images/personal myCRMSIM img.png";
 // Words that should get the brand-color highlight in the bio.
 // Any matched word/phrase gets wrapped in a colored <span>.
 const HIGHLIGHT = [
+  "HyperNym & Metis International Limited",
   "QuantumStack",
-  "third-party integrations",
-  "workflow automation",
-  "Zapier",
-  "Make",
-  "Salesforce",
-  "Zoho",
-  "HubSpot",
-  "Send SMS",
-  "AWS",
-  "RESTful APIs",
+  "AI Application Engineer & Full Stack Developer",
+  "MyCRMSim-AI",
+  "\"Simi\"",
+  "LangGraph",
+  "LangChain",
 ];
 
 function renderBioParagraph(text: string, key: number) {
@@ -55,10 +51,10 @@ function renderBioParagraph(text: string, key: number) {
 }
 
 const STACK_BADGES = [
-  "TypeScript", "React", "Next.js", "Node.js", "Express", "Python",
-  "PostgreSQL", "MongoDB", "Docker", "AWS",
+  "Python", "FastAPI", "Django", "LangChain", "LangGraph", "RAG",
+  "React", "Next.js", "Node.js", "Express", "TypeScript", "Angular",
+  "MySQL", "PostgreSQL", "MongoDB", "Redis", "Apache Kafka", "Docker",
   "Zapier", "Make", "Salesforce", "HubSpot", "Zoho",
-  "Webhooks", "REST APIs",
 ];
 
 export default function About() {
@@ -79,8 +75,8 @@ export default function About() {
             About Me
           </span>
           <h2 className="mt-5 text-4xl sm:text-5xl font-bold text-ink dark:text-white">
-            Building <span className="text-gradient">scalable</span> products
-            <br />that <span className="text-gradient">ship fast</span>.
+            Building <span className="text-gradient">AI-powered</span> products
+            <br />that make it to <span className="text-gradient">production</span>.
           </h2>
         </div>
 
@@ -108,7 +104,7 @@ export default function About() {
                 />
               </div>
 
-              {/* Floating QuantumStack badge — clickable, opens team page */}
+              {/* Floating current-company badge — opens the company site */}
               <a
                 href={personal.companyUrl}
                 target="_blank"
@@ -116,11 +112,11 @@ export default function About() {
                 className="group/qs absolute -bottom-4 -right-4 sm:-right-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-card rounded-2xl pl-4 pr-3 py-3 flex items-center gap-2 hover:border-brand-500/60 hover:shadow-[0_8px_24px_rgba(245,158,11,0.2)] hover:-translate-y-0.5 transition-all"
               >
                 <Building2 size={18} className="text-brand-500" />
-                <div>
+                <div className="max-w-[11rem]">
                   <div className="text-[10px] uppercase tracking-wider text-slate-400">
-                    Currently at
+                    Currently @
                   </div>
-                  <div className="text-sm font-bold text-ink dark:text-white">
+                  <div className="text-sm font-bold text-ink dark:text-white leading-snug">
                     {personal.company}
                   </div>
                 </div>
@@ -138,7 +134,7 @@ export default function About() {
               className="mt-12 inline-flex items-center gap-2 px-5 py-3 rounded-xl border-2 border-brand-500 text-brand-500 text-sm font-semibold hover:bg-brand-500 hover:text-white transition-colors"
             >
               <Download size={16} />
-              Download Resume
+              Download Résumé
             </a>
           </div>
 
@@ -148,8 +144,8 @@ export default function About() {
             <div className="border-l-4 border-brand-500 pl-4 mb-6 italic">
               <Quote size={18} className="inline text-brand-500 mr-1" />
               <span className="text-base sm:text-lg text-slate-700 dark:text-slate-300">
-                I don&apos;t just write features — I think about system design,
-                performance, scalability, and developer experience.
+                MERN, Python and LLMs, shipped end to end — from LLM agents
+                to microservices, built for production.
               </span>
             </div>
 
@@ -172,10 +168,10 @@ export default function About() {
           </div>
         </div>
 
-        {/* Education / Experience cards — items-stretch keeps both at equal height */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl mx-auto items-stretch">
+        {/* Education / Experience cards — Experience is wider to fit the role timeline */}
+        <div className="mt-16 grid grid-cols-1 lg:grid-cols-5 gap-5 max-w-6xl mx-auto items-start">
           {/* ─── EDUCATION CARD — minimal Triple-Track version ─── */}
-          <article className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 hover:border-brand-500/40 transition-colors">
+          <article className="lg:col-span-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 hover:border-brand-500/40 transition-colors">
             {/* Header */}
             <div className="flex items-center justify-between flex-wrap gap-2">
               <div className="flex items-center gap-2 text-brand-500 font-semibold text-sm">
@@ -220,7 +216,7 @@ export default function About() {
           </article>
 
           {/* ─── EXPERIENCE CARD — parallel structure to Education ─── */}
-          <article className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 hover:border-brand-500/40 transition-colors relative overflow-hidden">
+          <article className="lg:col-span-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 hover:border-brand-500/40 transition-colors relative overflow-hidden">
             {/* Subtle decorative sparkles in corner */}
             <Sparkles
               size={64}
@@ -247,32 +243,56 @@ export default function About() {
               {about.experience.bold}
             </p>
 
-            {/* Inner card — mirrors Education's degree card */}
-            <div className="mt-6 rounded-xl border border-brand-200 dark:border-brand-500/30 bg-gradient-to-br from-brand-50/40 to-transparent dark:from-brand-500/5 p-4">
-              <div className="flex items-start justify-between gap-2 flex-wrap">
-                <h4 className="text-base sm:text-lg font-bold text-ink dark:text-white leading-tight">
-                  {about.experience.role}
-                </h4>
-                <span className="text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded bg-brand-500 text-white shrink-0">
-                  Current
-                </span>
-              </div>
-              <a
-                href={personal.companyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group/co mt-1.5 inline-flex items-center gap-1 text-sm text-brand-500 font-medium hover:text-brand-600 transition-colors"
-              >
-                {about.experience.company}
-                <ArrowUpRight
-                  size={13}
-                  className="group-hover/co:translate-x-0.5 group-hover/co:-translate-y-0.5 transition-transform"
-                />
-              </a>
-              <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
-                {about.experience.period}
-              </p>
-            </div>
+            {/* Role timeline — newest first */}
+            <ol className="mt-6 space-y-4">
+              {about.experience.roles.map((r) => (
+                <li
+                  key={r.company}
+                  className={`rounded-xl border p-4 ${
+                    r.current
+                      ? "border-brand-200 dark:border-brand-500/30 bg-gradient-to-br from-brand-50/40 to-transparent dark:from-brand-500/5"
+                      : "border-slate-200 dark:border-slate-800"
+                  }`}
+                >
+                  <div className="flex items-start justify-between gap-2 flex-wrap">
+                    <h4 className="text-base font-bold text-ink dark:text-white leading-tight">
+                      {r.role}
+                    </h4>
+                    {r.current && (
+                      <span className="text-[9px] font-bold uppercase tracking-widest px-2 py-0.5 rounded bg-brand-500 text-white shrink-0">
+                        Current
+                      </span>
+                    )}
+                  </div>
+                  <a
+                    href={r.companyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/co mt-1.5 inline-flex items-center gap-1 text-sm text-brand-500 font-medium hover:text-brand-600 transition-colors"
+                  >
+                    {r.company}
+                    <ArrowUpRight
+                      size={13}
+                      className="group-hover/co:translate-x-0.5 group-hover/co:-translate-y-0.5 transition-transform"
+                    />
+                  </a>
+                  <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                    {r.period} · {r.meta}
+                  </p>
+                  <ul className="mt-3 space-y-1.5">
+                    {r.bullets.map((b) => (
+                      <li
+                        key={b}
+                        className="flex items-start gap-2 text-xs sm:text-[13px] text-slate-600 dark:text-slate-300 leading-relaxed"
+                      >
+                        <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-brand-500 shrink-0" />
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ol>
           </article>
         </div>
       </div>

@@ -1,12 +1,20 @@
 "use client";
 
 import Image, { type StaticImageData } from "next/image";
+import Link from "next/link";
 import {
   ExternalLink,
   ArrowUpRight,
   Check,
   FileText,
   Github,
+  MessageCircle,
+  Lock,
+  Truck,
+  MapPin,
+  Building2,
+  Database,
+  type LucideIcon,
 } from "lucide-react";
 import { projects, personal } from "@/lib/data";
 // Local logo imports — Next.js handles static asset URLs automatically.
@@ -24,7 +32,7 @@ import salesforceLogo from "../app/images/Integrations Logo/salesforce.svg";
 // background (white + orange accents). Use this when you want the brand to
 // dominate, not the screenshot.
 const LOGO_MAP: Record<string, StaticImageData> = {
-  myCRMSIM: myCrmsimLogo,
+  "MyCRMSim-AI": myCrmsimLogo,
 };
 
 // Map project titles to imported full-bleed screenshots. Images render as
@@ -47,6 +55,14 @@ const INTEGRATION_LOGOS: Record<
   n8n:        { src: n8nLogo,        name: "n8n",  darkInvert: true },   // black "n8n" text → needs invert
   salesforce: { src: salesforceLogo, name: "Salesforce" },               // blue cloud, works on dark
 };
+
+// HyperNet is employer work, so it gets an icon panel instead of screenshots.
+const IOT_TILES: { icon: LucideIcon; label: string }[] = [
+  { icon: Truck, label: "Fleet" },
+  { icon: MapPin, label: "Asset tracking" },
+  { icon: Building2, label: "Smart buildings" },
+  { icon: Database, label: "Data lake" },
+];
 
 // Helper — does this URL point to GitHub?
 const isGitHubUrl = (url?: string) => !!url && /github\.com/i.test(url);
@@ -92,8 +108,8 @@ export default function Projects() {
             Projects
           </h2>
           <p className="mt-4 text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
-            A handful of projects I&apos;ve shipped in production — full-stack
-            platforms, admin dashboards, and CRM integrations.
+            AI agents, IoT microservices, CRM integrations and full-stack
+            platforms — work that runs in production.
           </p>
         </div>
 
@@ -192,33 +208,48 @@ export default function Projects() {
 
             {/* Actions */}
             <div className="mt-7 flex flex-wrap gap-3">
+              {featured.demoUrl && (
+                <a
+                  href={featured.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/btn inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold transition-all hover:shadow-soft"
+                >
+                  <MessageCircle size={15} />
+                  Try Simi live
+                  <ArrowUpRight
+                    size={15}
+                    className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
+                  />
+                </a>
+              )}
               <a
                 href={featured.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/btn inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold transition-all hover:shadow-soft"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-sm font-semibold hover:border-brand-500 hover:text-brand-500 transition-colors"
               >
-                Visit Live Site
-                <ArrowUpRight
-                  size={15}
-                  className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
-                />
+                <ExternalLink size={14} />
+                Visit App
               </a>
-              <a
+              <Link
                 href={featured.caseStudyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-sm font-semibold hover:border-brand-500 hover:text-brand-500 transition-colors"
               >
                 <FileText size={14} />
-                Case Study
-              </a>
+                Read case study
+              </Link>
             </div>
+            {featured.demoUrl && (
+              <p className="mt-3 text-xs text-slate-500 dark:text-slate-400">
+                Simi is the chat assistant in the corner of mycrmsim.com — ask it anything about the product.
+              </p>
+            )}
           </div>
         </article>
 
         {/* ─── SECONDARY PROJECTS (smaller cards) ─────────────────── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {secondary.map((p) => {
             const logoSrc = getLogoSrc(p.title, p.logo);
             return (
@@ -229,7 +260,7 @@ export default function Projects() {
               {/* Image / Logo panel — theme-aware brand background */}
               <div
                 className={`relative aspect-[16/9] overflow-hidden ${
-                  logoSrc || p.logoGrid
+                  logoSrc || p.logoGrid || p.visual
                     ? "bg-white dark:bg-[#0a0f1f]"
                     : "bg-slate-100 dark:bg-slate-800"
                 }`}
@@ -250,7 +281,7 @@ export default function Projects() {
                   </div>
                 ) : p.logoGrid ? (
                   // ── 2×2 integration logo grid (Third-Party Integrations) ──
-                  <div className="absolute inset-0 p-4">
+                  <div className="absolute inset-0 px-4 pb-4 pt-12">
                     {/* Brand accent backdrop */}
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(245,158,11,0.18),transparent_60%)] dark:bg-[radial-gradient(circle_at_25%_25%,rgba(245,158,11,0.28),transparent_65%)] pointer-events-none" />
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,rgba(252,189,75,0.12),transparent_55%)] dark:bg-[radial-gradient(circle_at_75%_75%,rgba(252,189,75,0.18),transparent_60%)] pointer-events-none" />
@@ -288,6 +319,25 @@ export default function Projects() {
                       })}
                     </div>
                   </div>
+                ) : p.visual === "iot" ? (
+                  // ── Icon panel for employer work (no screenshots) ──
+                  <div className="absolute inset-0 px-4 pb-4 pt-12">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_25%,rgba(245,158,11,0.18),transparent_60%)] dark:bg-[radial-gradient(circle_at_25%_25%,rgba(245,158,11,0.28),transparent_65%)] pointer-events-none" />
+                    <div className="absolute inset-0 bg-grid opacity-20 dark:opacity-10 pointer-events-none" />
+                    <div className="relative h-full w-full grid grid-cols-2 grid-rows-2 gap-2 sm:gap-3">
+                      {IOT_TILES.map(({ icon: TileIcon, label }) => (
+                        <div
+                          key={label}
+                          className="rounded-xl bg-white dark:bg-slate-800/90 shadow-sm border border-slate-200/80 dark:border-slate-700/70 flex flex-col items-center justify-center gap-1.5"
+                        >
+                          <TileIcon size={22} className="text-brand-500" />
+                          <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                            {label}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 ) : (
                   // ── Fallback regular project screenshot ──
                   <Image
@@ -301,6 +351,11 @@ export default function Projects() {
                 <span className="absolute top-4 left-4 inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white/95 dark:bg-slate-900/95 text-brand-600 dark:text-brand-400 text-[10px] font-bold tracking-wider uppercase backdrop-blur-sm border border-brand-200/60 dark:border-brand-500/30 z-10">
                   {p.category}
                 </span>
+                {p.badge && (
+                  <span className="absolute top-4 right-4 px-2 py-1 rounded-md bg-emerald-500 text-white text-[10px] font-bold tracking-wider uppercase z-10">
+                    {p.badge}
+                  </span>
+                )}
               </div>
 
               {/* Body */}
@@ -352,7 +407,7 @@ export default function Projects() {
                 )}
 
                 {/* Tech */}
-                <div className="mt-4 flex flex-wrap gap-1.5">
+                <div className="mt-4 mb-5 flex flex-wrap gap-1.5">
                   {p.tech.slice(0, 5).map((t) => (
                     <span
                       key={t}
@@ -364,8 +419,13 @@ export default function Projects() {
                 </div>
 
                 {/* Actions — GitHub repos get GitHub icon + label */}
-                <div className="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap gap-2">
-                  {p.liveUrl && p.liveUrl !== "#" ? (
+                <div className="mt-auto pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap gap-2">
+                  {p.privateNote ? (
+                    <span className="flex-1 inline-flex items-center justify-center gap-1.5 text-xs font-medium py-2 px-3 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400">
+                      <Lock size={12} />
+                      {p.privateNote}
+                    </span>
+                  ) : p.liveUrl && p.liveUrl !== "#" ? (
                     <a
                       href={p.liveUrl}
                       target="_blank"
@@ -389,15 +449,17 @@ export default function Projects() {
                       Live coming soon
                     </span>
                   )}
-                  <a
-                    href={p.caseStudyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-1.5 text-xs font-medium py-2 px-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
-                  >
-                    <FileText size={12} />
-                    {isGitHubUrl(p.caseStudyUrl) ? "README" : "Case Study"}
-                  </a>
+                  {p.caseStudyUrl && (
+                    <a
+                      href={p.caseStudyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-1.5 text-xs font-medium py-2 px-3 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                    >
+                      <FileText size={12} />
+                      {isGitHubUrl(p.caseStudyUrl) ? "README" : "Case Study"}
+                    </a>
+                  )}
                 </div>
               </div>
             </article>

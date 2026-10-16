@@ -66,14 +66,14 @@ export default function Skills() {
             Skills &amp; Technologies
           </h2>
           <p className="mt-6 text-slate-500 dark:text-slate-400">
-            Technologies and tools I work with on a regular basis
+            Grouped the same way as my résumé — AI, MERN, Python, data, Angular and CRM automation
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:[&>*:last-child:nth-child(3n+1)]:col-start-2">
           {skillCategories.map((cat) => {
             const radarData = cat.items.map((it) => ({
-              skill: it.name,
+              skill: ("short" in it && it.short) || it.name,
               value: it.level,
             }));
             return (
@@ -106,7 +106,7 @@ export default function Skills() {
                   <ResponsiveContainer width="100%" height="100%">
                     <RadarChart
                       data={radarData}
-                      margin={{ top: 10, right: 20, bottom: 10, left: 20 }}
+                      margin={{ top: 10, right: 28, bottom: 10, left: 28 }}
                     >
                       <PolarGrid
                         stroke="rgba(245,158,11,0.3)"

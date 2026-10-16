@@ -37,8 +37,8 @@ export default function ToolsMarquee() {
           Tools I Use Daily
         </h2>
         <p className="mt-3 text-sm text-slate-500 dark:text-slate-400 max-w-xl mx-auto">
-          The full toolkit — from frontend frameworks to third-party platforms I
-          integrate into client apps.
+          The full toolkit — from LLM frameworks and Python services to the
+          frontends and CRM platforms I integrate into client apps.
         </p>
       </div>
 

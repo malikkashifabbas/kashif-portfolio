@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Building2, Calendar, ArrowRight } from "lucide-react";
+import { Building2, ArrowRight, Download, Github, Linkedin } from "lucide-react";
 import { personal } from "@/lib/data";
 
 // ── Bubble config ──────────────────────────────────────────────────────
@@ -109,27 +109,35 @@ export default function Hero() {
       {/* ── Foreground content ─────────────────────────────────── */}
       <div className="container-x relative z-10">
         <div className="max-w-5xl">
-          {/* QuantumStack badge — links to the team page */}
+          {/* Current-role badge — links to the company site */}
           <a
             href={personal.companyUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group/badge inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 backdrop-blur-sm text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 mb-8 hover:border-brand-500/60 hover:shadow-soft transition-all shadow-soft"
+            className="group/badge inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 backdrop-blur-sm text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 mb-6 hover:border-brand-500/60 hover:shadow-soft transition-all shadow-soft max-w-full"
           >
-            <span className="relative flex h-2 w-2">
+            <span className="relative flex h-2 w-2 shrink-0">
               <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
             </span>
-            <Building2 size={14} className="text-brand-500" />
-            Currently at <span className="font-semibold text-ink dark:text-white">{personal.company}</span>
+            <Building2 size={14} className="text-brand-500 shrink-0" />
+            <span>
+              Currently @ <span className="font-semibold text-ink dark:text-white">{personal.company}</span>
+              <span className="hidden sm:inline"> — {personal.currentPosition}</span>
+            </span>
             <ArrowRight
               size={12}
-              className="text-slate-400 group-hover/badge:text-brand-500 group-hover/badge:translate-x-0.5 transition-all"
+              className="shrink-0 text-slate-400 group-hover/badge:text-brand-500 group-hover/badge:translate-x-0.5 transition-all"
             />
           </a>
 
+          {/* Role eyebrow */}
+          <p className="mb-5 text-xs sm:text-sm font-bold uppercase tracking-[0.18em] text-brand-600 dark:text-brand-400">
+            {personal.role}
+          </p>
+
           {/* Headline — big bold statement with accent words */}
-          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold tracking-tight text-ink dark:text-white leading-[1.05] drop-shadow-[0_4px_12px_rgba(10,21,48,0.08)]">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-extrabold tracking-tight text-ink dark:text-white leading-[1.05] drop-shadow-[0_4px_12px_rgba(10,21,48,0.08)]">
             {personal.headline.pre}{" "}
             <span className="text-gradient">{personal.headline.accent1}</span>{" "}
             {personal.headline.middle}{" "}
@@ -149,20 +157,41 @@ export default function Hero() {
           </p>
 
           {/* CTAs */}
-          <div className="mt-9 flex flex-wrap items-center gap-4">
+          <div className="mt-9 flex flex-wrap items-center gap-3 sm:gap-4">
             <a
               href="#projects"
               className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-semibold transition-all hover:shadow-[0_8px_24px_rgba(245,158,11,0.35)] hover:-translate-y-0.5"
             >
-              View Case Studies
+              View Projects
               <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
             </a>
             <a
-              href="#contact"
+              href={personal.resumeUrl}
+              download
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-ink dark:border-slate-200 text-ink dark:text-slate-100 font-semibold hover:bg-ink hover:text-white dark:hover:bg-slate-100 dark:hover:text-ink transition-all hover:-translate-y-0.5"
             >
-              <Calendar size={16} />
-              Book a Call
+              <Download size={16} />
+              Download Résumé
+            </a>
+            <a
+              href={personal.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn profile"
+              className="inline-flex items-center gap-2 px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-semibold hover:border-brand-500 hover:text-brand-500 transition-all hover:-translate-y-0.5"
+            >
+              <Linkedin size={16} />
+              LinkedIn
+            </a>
+            <a
+              href={personal.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub profile"
+              className="inline-flex items-center gap-2 px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 font-semibold hover:border-brand-500 hover:text-brand-500 transition-all hover:-translate-y-0.5"
+            >
+              <Github size={16} />
+              GitHub
             </a>
           </div>
 

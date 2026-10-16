@@ -337,8 +337,8 @@ export default function Contact() {
             </h3>
           </div>
           <p className="mt-3 text-sm text-slate-500 dark:text-slate-400">
-            I&apos;m open for full-stack opportunities and freelance work.
-            Let&apos;s build something cool.
+            I&apos;m open to AI and full-stack freelance projects and
+            collaborations. Let&apos;s build something cool.
           </p>
           <a
             href={gmailComposeUrl(
@@ -360,7 +360,7 @@ export default function Contact() {
           <div className="text-slate-500 dark:text-slate-400 text-center md:text-left">
             © {new Date().getFullYear()} {personal.name}
             <div className="text-[11px] text-brand-500 font-medium mt-0.5">
-              Built with MERN Stack
+              Built with Next.js &amp; Tailwind CSS
             </div>
           </div>
           <a
