@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Quote, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { testimonials } from "@/lib/data";
+import { Reveal } from "@/components/Reveal";
 
 export default function Testimonials() {
   const [active, setActive] = useState(0);
@@ -30,7 +31,7 @@ export default function Testimonials() {
 
       <div className="container-x relative">
         {/* Section label */}
-        <div className="text-center mb-12">
+        <Reveal className="text-center mb-12">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-50 dark:bg-brand-500/10 border border-brand-200 dark:border-brand-500/20 text-xs font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-500" />
             What Clients Say
@@ -38,10 +39,10 @@ export default function Testimonials() {
           <h2 className="mt-5 text-4xl sm:text-5xl font-bold text-ink dark:text-white">
             Testimonials
           </h2>
-        </div>
+        </Reveal>
 
         {/* Testimonial card */}
-        <div className="relative max-w-4xl mx-auto">
+        <Reveal className="relative max-w-4xl mx-auto">
           <article
             key={active}
             className="relative rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 sm:p-12 shadow-card animate-[fadeIn_0.5s_ease-out]"
@@ -108,7 +109,7 @@ export default function Testimonials() {
           >
             <ChevronRight size={18} />
           </button>
-        </div>
+        </Reveal>
 
         {/* Dot indicator */}
         <div className="flex items-center justify-center gap-2 mt-8">

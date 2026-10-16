@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { tools } from "@/lib/data";
+import { Reveal } from "@/components/Reveal";
 
 /**
  * Tools marquee — real brand SVGs self-hosted in public/tool-icons.
@@ -28,7 +29,7 @@ export default function ToolsMarquee() {
   return (
     <section className="py-20 sm:py-24 bg-white dark:bg-[#0d142a]/60 relative overflow-hidden">
       {/* Section header */}
-      <div className="container-x text-center mb-12">
+      <Reveal className="container-x text-center mb-12">
         <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-50 dark:bg-brand-500/10 border border-brand-200 dark:border-brand-500/20 text-xs font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-wider">
           <span className="w-1.5 h-1.5 rounded-full bg-brand-500" />
           My Stack
@@ -40,7 +41,7 @@ export default function ToolsMarquee() {
           The full toolkit — from LLM frameworks and Python services to the
           frontends and CRM platforms I integrate into client apps.
         </p>
-      </div>
+      </Reveal>
 
       {/* Edge fade gradients */}
       <div className="relative">

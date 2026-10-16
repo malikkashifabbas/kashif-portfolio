@@ -10,6 +10,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import { about, personal } from "@/lib/data";
+import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
 // Personal photo — Next.js static import; filenames with spaces are fine
 import profileImg from "../app/images/personal myCRMSIM img.png";
 
@@ -69,7 +70,7 @@ export default function About() {
 
       <div className="container-x relative">
         {/* Section label */}
-        <div className="text-center mb-14">
+        <Reveal className="text-center mb-14">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-50 dark:bg-brand-500/10 border border-brand-200 dark:border-brand-500/20 text-xs font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-500" />
             About Me
@@ -78,11 +79,11 @@ export default function About() {
             Building <span className="text-gradient">AI-powered</span> products
             <br />that make it to <span className="text-gradient">production</span>.
           </h2>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14 items-start max-w-6xl mx-auto">
           {/* Photo + quick info */}
-          <div className="lg:col-span-2 flex flex-col items-center lg:items-start">
+          <Reveal direction="left" className="lg:col-span-2 flex flex-col items-center lg:items-start">
             <div className="relative w-64 h-64 sm:w-72 sm:h-72">
               {/* Soft orange glow halo behind the photo */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-brand-400/30 to-brand-500/10 blur-2xl" />
@@ -136,10 +137,10 @@ export default function About() {
               <Download size={16} />
               Download Résumé
             </a>
-          </div>
+          </Reveal>
 
           {/* Bio + stack */}
-          <div className="lg:col-span-3">
+          <Reveal direction="right" delay={0.15} className="lg:col-span-3">
             {/* Pull-quote */}
             <div className="border-l-4 border-brand-500 pl-4 mb-6 italic">
               <Quote size={18} className="inline text-brand-500 mr-1" />
@@ -165,13 +166,14 @@ export default function About() {
                 </span>
               ))}
             </div>
-          </div>
+          </Reveal>
         </div>
 
         {/* Education / Experience cards — Experience is wider to fit the role timeline */}
-        <div className="mt-16 grid grid-cols-1 lg:grid-cols-5 gap-5 max-w-6xl mx-auto items-start">
+        <Stagger className="mt-16 grid grid-cols-1 lg:grid-cols-5 gap-5 max-w-6xl mx-auto items-start">
           {/* ─── EDUCATION CARD — minimal Triple-Track version ─── */}
-          <article className="lg:col-span-2 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 hover:border-brand-500/40 transition-colors">
+          <StaggerItem className="lg:col-span-2">
+          <article className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 hover:border-brand-500/40 transition-colors">
             {/* Header */}
             <div className="flex items-center justify-between flex-wrap gap-2">
               <div className="flex items-center gap-2 text-brand-500 font-semibold text-sm">
@@ -214,9 +216,11 @@ export default function About() {
               </div>
             ))}
           </article>
+          </StaggerItem>
 
           {/* ─── EXPERIENCE CARD — parallel structure to Education ─── */}
-          <article className="lg:col-span-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 hover:border-brand-500/40 transition-colors relative overflow-hidden">
+          <StaggerItem className="lg:col-span-3">
+          <article className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 hover:border-brand-500/40 transition-colors relative overflow-hidden">
             {/* Subtle decorative sparkles in corner */}
             <Sparkles
               size={64}
@@ -294,7 +298,8 @@ export default function About() {
               ))}
             </ol>
           </article>
-        </div>
+          </StaggerItem>
+        </Stagger>
       </div>
     </section>
   );

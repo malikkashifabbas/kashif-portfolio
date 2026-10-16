@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Building2, ArrowRight, Download, Github, Linkedin } from "lucide-react";
 import { personal } from "@/lib/data";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
+import { Stagger, StaggerItem } from "@/components/Reveal";
 
 // ── Bubble config ──────────────────────────────────────────────────────
 type Bubble = {
@@ -109,7 +110,8 @@ export default function Hero() {
 
       {/* ── Foreground content ─────────────────────────────────── */}
       <div className="container-x relative z-10">
-        <div className="max-w-5xl">
+        <Stagger hero className="max-w-5xl">
+          <StaggerItem variant="hero">
           {/* Current-role badge — links to the company site */}
           <a
             href={personal.companyUrl}
@@ -132,11 +134,17 @@ export default function Hero() {
             />
           </a>
 
+          </StaggerItem>
+
+          <StaggerItem variant="hero">
           {/* Role eyebrow */}
           <p className="mb-5 text-xs sm:text-sm font-bold uppercase tracking-[0.18em] text-brand-600 dark:text-brand-400">
             {personal.role}
           </p>
 
+          </StaggerItem>
+
+          <StaggerItem variant="hero">
           {/* Headline — big bold statement with accent words */}
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-[4.25rem] font-extrabold tracking-tight text-ink dark:text-white leading-[1.05] drop-shadow-[0_4px_12px_rgba(10,21,48,0.08)]">
             {personal.headline.pre}{" "}
@@ -146,17 +154,26 @@ export default function Hero() {
             {personal.headline.end}
           </h1>
 
+          </StaggerItem>
+
+          <StaggerItem variant="hero">
           {/* Typing tagline — now SPECIALTIES, not titles */}
           <div className="mt-7 sm:mt-9 text-xl sm:text-2xl md:text-3xl font-medium text-slate-600 dark:text-slate-400 min-h-[1.4em]">
             <span className="text-slate-400 dark:text-slate-500">I focus on </span>
             <span className="typing-caret text-ink dark:text-white font-semibold">{text}</span>
           </div>
 
+          </StaggerItem>
+
+          <StaggerItem variant="hero">
           {/* Description */}
           <p className="mt-7 max-w-2xl text-base sm:text-lg leading-relaxed text-slate-600 dark:text-slate-400">
             {personal.description}
           </p>
 
+          </StaggerItem>
+
+          <StaggerItem variant="hero">
           {/* CTAs */}
           <div className="mt-9 flex flex-wrap items-center gap-3 sm:gap-4">
             <a
@@ -206,6 +223,9 @@ export default function Hero() {
             </a>
           </div>
 
+          </StaggerItem>
+
+          <StaggerItem variant="hero">
           {/* Stats bar — trust signals */}
           <div className="mt-14 sm:mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-10 max-w-3xl border-t border-slate-200 dark:border-slate-800 pt-8">
             <Stat value={personal.stats.projectsShipped} label="Projects Shipped" />
@@ -213,7 +233,8 @@ export default function Hero() {
             <Stat value="AWS" label="Cloud Native" />
             <Stat value={personal.stats.linkedinConnections} label="LinkedIn Network" />
           </div>
-        </div>
+          </StaggerItem>
+        </Stagger>
       </div>
     </section>
   );

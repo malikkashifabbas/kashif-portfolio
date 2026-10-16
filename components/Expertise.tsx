@@ -14,6 +14,7 @@ import {
   Sparkles,
   type LucideIcon,
 } from "lucide-react";
+import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
 
 // ──────────────────────────────────────────────────────────────────────────────
 // Card data — defined inline so each card can carry its own visual content.
@@ -127,7 +128,7 @@ export default function Expertise() {
 
       <div className="container-x relative">
         {/* ─── Section header ─────────────────────────────────────── */}
-        <div className="text-center mb-14 sm:mb-16">
+        <Reveal className="text-center mb-14 sm:mb-16">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-50 dark:bg-brand-500/10 border border-brand-200 dark:border-brand-500/20 text-xs font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-500" />
             Capabilities
@@ -139,14 +140,16 @@ export default function Expertise() {
             From LLM agents and RAG pipelines to MERN apps, Python microservices
             and CRM automation — built end to end for production.
           </p>
-        </div>
+        </Reveal>
 
         {/* ─── Bento grid ─────────────────────────────────────────── */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-[minmax(260px,auto)]">
+        <Stagger className="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-[minmax(260px,auto)]">
           {cards.map((card) => (
-            <Card key={card.num} card={card} />
+            <StaggerItem key={card.num} variant="scaleUp" className={card.className}>
+              <Card card={card} />
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </div>
     </section>
   );
@@ -164,7 +167,7 @@ function Card({ card }: { card: ExpertiseCard }) {
         card.featured
           ? "border-brand-300/60 dark:border-brand-500/30 hover:border-brand-500"
           : "border-slate-200 dark:border-slate-800 hover:border-brand-400/50"
-      } ${card.className}`}
+      } h-full`}
     >
       {/* Numbered tag — top right */}
       <span className="absolute top-5 right-6 text-xs font-mono font-bold text-slate-300 dark:text-slate-700 tracking-wider">

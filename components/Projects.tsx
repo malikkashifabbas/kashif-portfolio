@@ -17,6 +17,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { projects, personal } from "@/lib/data";
+import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
 // Local logo imports — Next.js handles static asset URLs automatically.
 // Filenames with spaces are fine in import strings.
 import myCrmsimLogo from "../app/images/myCRMSIM LOGO.png";
@@ -99,7 +100,7 @@ export default function Projects() {
 
       <div className="container-x relative">
         {/* Section label */}
-        <div className="text-center mb-14">
+        <Reveal className="text-center mb-14">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-50 dark:bg-brand-500/10 border border-brand-200 dark:border-brand-500/20 text-xs font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-500" />
             Selected Work
@@ -111,9 +112,10 @@ export default function Projects() {
             AI agents, IoT microservices, CRM integrations and full-stack
             platforms — work that runs in production.
           </p>
-        </div>
+        </Reveal>
 
         {/* ─── FEATURED PROJECT (full-width hero card) ─────────────── */}
+        <Reveal>
         <article className="group relative rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-card mb-10 grid grid-cols-1 lg:grid-cols-2 gap-0">
           {/* Image / Logo panel — theme-aware brand background */}
           <div
@@ -247,15 +249,16 @@ export default function Projects() {
             )}
           </div>
         </article>
+        </Reveal>
 
         {/* ─── SECONDARY PROJECTS (smaller cards) ─────────────────── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <Stagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {secondary.map((p) => {
             const logoSrc = getLogoSrc(p.title, p.logo);
             return (
+            <StaggerItem key={p.title} className="h-full">
             <article
-              key={p.title}
-              className="card-hover rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden flex flex-col"
+              className="h-full card-hover rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden flex flex-col"
             >
               {/* Image / Logo panel — theme-aware brand background */}
               <div
@@ -463,9 +466,10 @@ export default function Projects() {
                 </div>
               </div>
             </article>
+            </StaggerItem>
             );
           })}
-        </div>
+        </Stagger>
       </div>
 
       {/* Marquee CTA — clickable, opens GitHub profile in new tab */}

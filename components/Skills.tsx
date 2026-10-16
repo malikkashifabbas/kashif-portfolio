@@ -29,6 +29,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { skillCategories } from "@/lib/data";
+import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
 
 const iconMap: Record<string, LucideIcon> = {
   coffee: Coffee,
@@ -61,25 +62,25 @@ export default function Skills() {
       className="py-20 sm:py-28 bg-surface dark:bg-[#0a0f1f]"
     >
       <div className="container-x">
-        <div className="text-center mb-14">
+        <Reveal className="text-center mb-14">
           <h2 className="section-heading text-3xl sm:text-4xl font-bold text-brand-500">
             Skills &amp; Technologies
           </h2>
           <p className="mt-6 text-slate-500 dark:text-slate-400">
             Grouped the same way as my résumé — AI, MERN, Python, data, Angular and CRM automation
           </p>
-        </div>
+        </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:[&>*:last-child:nth-child(3n+1)]:col-start-2">
+        <Stagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:[&>*:last-child:nth-child(3n+1)]:col-start-2">
           {skillCategories.map((cat) => {
             const radarData = cat.items.map((it) => ({
               skill: ("short" in it && it.short) || it.name,
               value: it.level,
             }));
             return (
+              <StaggerItem key={cat.title} className="h-full">
               <div
-                key={cat.title}
-                className="rounded-2xl border border-brand-200/60 dark:border-brand-500/20 bg-white dark:bg-slate-900/60 p-6 shadow-soft"
+                className="h-full rounded-2xl border border-brand-200/60 dark:border-brand-500/20 bg-white dark:bg-slate-900/60 p-6 shadow-soft"
               >
                 <h3 className="text-brand-500 font-semibold text-lg">
                   {cat.title}
@@ -137,9 +138,10 @@ export default function Skills() {
                   </ResponsiveContainer>
                 </div>
               </div>
+              </StaggerItem>
             );
           })}
-        </div>
+        </Stagger>
       </div>
     </section>
   );

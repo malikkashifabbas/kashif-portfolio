@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { personal } from "@/lib/data";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
+import { Reveal } from "@/components/Reveal";
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
@@ -122,21 +123,22 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-20 sm:py-28 bg-white dark:bg-[#0d142a]/60"
+      className="py-20 sm:py-28 bg-white dark:bg-[#0d142a]/60 overflow-x-clip"
     >
       <div className="container-x">
-        <div className="text-center mb-12">
+        <Reveal className="text-center mb-12">
           <h2 className="section-heading text-3xl sm:text-4xl font-bold text-ink dark:text-white">
             Get In Touch
           </h2>
           <p className="mt-6 text-slate-500 dark:text-slate-400">
             Let&apos;s build something meaningful together.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {/* Let's Connect */}
-          <div className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 shadow-soft">
+          <Reveal direction="left">
+          <div className="h-full rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 shadow-soft">
             <div className="border-l-4 border-brand-500 pl-3">
               <h3 className="text-lg font-bold text-ink dark:text-white">
                 Let&apos;s Connect
@@ -191,11 +193,13 @@ export default function Contact() {
               </div>
             </div>
           </div>
+          </Reveal>
 
           {/* Contact Form */}
+          <Reveal direction="right" delay={0.15}>
           <form
             onSubmit={onSubmit}
-            className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 shadow-soft"
+            className="h-full rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 shadow-soft"
             noValidate
           >
             <div className="border-l-4 border-brand-500 pl-3">
@@ -333,10 +337,11 @@ export default function Contact() {
               )}
             </div>
           </form>
+          </Reveal>
         </div>
 
         {/* Hire Me */}
-        <div className="mt-20 text-center">
+        <Reveal className="mt-20 text-center">
           <div className="inline-flex items-center gap-2">
             <CheckCircle2 size={22} className="text-brand-500" />
             <h3 className="text-2xl font-bold text-ink dark:text-white">
@@ -358,7 +363,7 @@ export default function Contact() {
             <Mail size={16} />
             Contact Me
           </a>
-        </div>
+        </Reveal>
       </div>
 
       {/* Footer — all social icons now wired to real URLs */}

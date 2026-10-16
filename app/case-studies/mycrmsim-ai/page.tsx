@@ -18,6 +18,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { personal } from "@/lib/data";
+import { Reveal, Stagger, StaggerItem } from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "MyCRMSim-AI case study — Malik Kashif Abbas",
@@ -106,7 +107,7 @@ export default function MyCrmSimCaseStudy() {
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-grid pointer-events-none" />
-        <div className="container-x relative py-16 sm:py-24 max-w-5xl">
+        <Reveal className="container-x relative py-16 sm:py-24 max-w-5xl">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-50 dark:bg-brand-500/10 border border-brand-200 dark:border-brand-500/20 text-xs font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-500" />
             Case study · MyCRMSim-AI
@@ -159,7 +160,7 @@ export default function MyCrmSimCaseStudy() {
               </span>
             ))}
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <div className="container-x max-w-5xl pb-20 sm:pb-28 space-y-16 sm:space-y-20">
@@ -181,9 +182,9 @@ export default function MyCrmSimCaseStudy() {
 
         {/* Flow */}
         <Section eyebrow="02 · How a message flows" title="From inbound message to a grounded reply">
-          <ol className="grid grid-cols-1 sm:grid-cols-5 gap-3">
+          <Stagger className="grid grid-cols-1 sm:grid-cols-5 gap-3">
             {FLOW.map(({ icon: Icon, title, sub }, i) => (
-              <li
+              <StaggerItem
                 key={title}
                 className="relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-4 shadow-soft"
               >
@@ -207,18 +208,18 @@ export default function MyCrmSimCaseStudy() {
                     className="hidden sm:block absolute top-1/2 -right-[11px] -translate-y-1/2 text-brand-500"
                   />
                 )}
-              </li>
+              </StaggerItem>
             ))}
-          </ol>
+          </Stagger>
         </Section>
 
         {/* Architecture */}
         <Section eyebrow="03 · How it works" title="The agents, the knowledge, and the plumbing">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <Stagger className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {PARTS.map(({ icon: Icon, title, body }) => (
+              <StaggerItem key={title} className="h-full">
               <article
-                key={title}
-                className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-6 shadow-soft"
+                className="h-full rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 p-6 shadow-soft"
               >
                 <span className="grid place-items-center w-10 h-10 rounded-xl bg-gradient-to-br from-brand-100 to-brand-200/60 dark:from-brand-500/20 dark:to-brand-500/5 text-brand-600 dark:text-brand-400">
                   <Icon size={18} />
@@ -230,8 +231,9 @@ export default function MyCrmSimCaseStudy() {
                   {body}
                 </p>
               </article>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </Section>
 
         {/* Integrations */}
@@ -269,9 +271,9 @@ export default function MyCrmSimCaseStudy() {
 
         {/* Results */}
         <Section eyebrow="06 · Result" title="Running in production">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <Stagger className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {RESULTS.map((m) => (
-              <div
+              <StaggerItem
                 key={m.label}
                 className="rounded-2xl bg-brand-50/60 dark:bg-brand-500/10 border border-brand-100 dark:border-brand-500/20 p-4"
               >
@@ -281,9 +283,9 @@ export default function MyCrmSimCaseStudy() {
                 <div className="mt-1 text-[11px] uppercase tracking-wider text-slate-500 dark:text-slate-400">
                   {m.label}
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
           <p className="mt-6">
             Both agents serve real businesses on app.mycrmsim.com, and Simi
             answers visitors on mycrmsim.com — the quickest way to see this work
@@ -292,7 +294,7 @@ export default function MyCrmSimCaseStudy() {
         </Section>
 
         {/* CTA */}
-        <div className="rounded-3xl border border-brand-300/60 dark:border-brand-500/30 bg-white dark:bg-slate-900/60 p-8 sm:p-10 text-center shadow-card">
+        <Reveal className="rounded-3xl border border-brand-300/60 dark:border-brand-500/30 bg-white dark:bg-slate-900/60 p-8 sm:p-10 text-center shadow-card">
           <h2 className="text-2xl sm:text-3xl font-bold text-ink dark:text-white">
             See Simi answer a real question
           </h2>
@@ -316,7 +318,7 @@ export default function MyCrmSimCaseStudy() {
               Get in touch
             </Link>
           </div>
-        </div>
+        </Reveal>
       </div>
     </main>
   );
@@ -332,7 +334,7 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section>
+    <Reveal>
       <div className="text-[11px] font-bold tracking-widest uppercase text-brand-500">
         {eyebrow}
       </div>
@@ -342,6 +344,6 @@ function Section({
       <div className="mt-5 space-y-4 text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
         {children}
       </div>
-    </section>
+    </Reveal>
   );
 }

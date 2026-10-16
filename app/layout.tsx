@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import MotionProvider from "@/components/MotionProvider";
 
 const SITE_URL = "https://malikkashifabbas.vercel.app";
 const TITLE =
@@ -56,7 +57,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-surface dark:bg-[#0a0f1f] text-ink dark:text-slate-200">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <MotionProvider>{children}</MotionProvider>
+        </ThemeProvider>
         <WhatsAppFloat />
       </body>
     </html>
